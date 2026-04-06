@@ -29,8 +29,8 @@ const CONTACT_ITEMS = [
   {
     icon: FaLinkedinIn,
     label: 'LinkedIn',
-    value: 'Add your LinkedIn',
-    href:  'https://linkedin.com/in/',
+    value: 'Naga Kumaraswamy',
+    href:  'https://www.linkedin.com/in/naga-kumaraswamy-gurram-a374833b0/',
     color: '#00b4d8',
   },
 ]

@@ -80,7 +80,7 @@ export default function Footer() {
           <div className="flex items-center gap-5">
             {[
               { href: 'https://github.com/kumarswamyg2005', icon: SiGithub, size: 16, hoverColor: 'var(--flame-orange)' },
-              { href: 'https://linkedin.com/in/', icon: FaLinkedinIn, size: 15, hoverColor: 'var(--water-cyan)' },
+              { href: 'https://www.linkedin.com/in/naga-kumaraswamy-gurram-a374833b0/', icon: FaLinkedinIn, size: 15, hoverColor: 'var(--water-cyan)' },
             ].map(({ href, icon: Icon, size, hoverColor }) => (
               <a
                 key={href}
