@@ -9,6 +9,7 @@ const PROJECT_META = {
   'resume-builder':   { color: '#4a90d9', kanji: '履' }, // Wind — steel blue
   'sign-bridge':      { color: '#00b4d8', kanji: '橋' }, // Water — cyan
   'manga-translator': { color: '#faa307', kanji: '訳' }, // Thunder — gold
+  'cropscan':         { color: '#22c55e', kanji: '農' }, // Vitality — green
 }
 
 const fadeUp = {
