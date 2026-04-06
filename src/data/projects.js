@@ -14,6 +14,16 @@
 
 const projects = [
   {
+    id: 'cropscan',
+    title: 'CropScan — AI Crop Disease Detector',
+    description:
+      'End-to-end deep learning application that identifies plant diseases from leaf images across 38 disease classes with 99.3% test accuracy. Built for farmers and agronomists to get instant, reliable diagnoses.',
+    tags: ['Python', 'TensorFlow', 'CNN', 'OpenCV', 'Flask', 'React'],
+    github: 'https://github.com/kumarswamyg2005',
+    demoUrl: 'https://crop-disease-detector-three.vercel.app/',
+    featured: true,
+  },
+  {
     id: 'stocksensei',
     title: 'StockSensei AI',
     description:
@@ -42,16 +52,6 @@ const projects = [
     github: 'https://github.com/kumarswamyg2005/SignBridge',
     demoUrl: '',
     featured: false,
-  },
-  {
-    id: 'cropscan',
-    title: 'CropScan — AI Crop Disease Detector',
-    description:
-      'End-to-end deep learning application that identifies plant diseases from leaf images across 38 disease classes with 99.3% test accuracy. Built for farmers and agronomists to get instant, reliable diagnoses.',
-    tags: ['Python', 'TensorFlow', 'CNN', 'OpenCV', 'Flask', 'React'],
-    github: 'https://github.com/kumarswamyg2005',
-    demoUrl: 'https://crop-disease-detector-three.vercel.app/',
-    featured: true,
   },
   {
     id: 'manga-translator',
