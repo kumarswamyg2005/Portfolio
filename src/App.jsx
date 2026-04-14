@@ -10,7 +10,7 @@ import Footer       from './components/Footer'
 export default function App() {
   return (
     <>
-      {/* Custom animated cursor (hidden on touch devices automatically) */}
+      {/* Grain overlay */}
       <CustomCursor />
 
       {/* Sticky navigation */}

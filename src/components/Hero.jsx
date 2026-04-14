@@ -11,7 +11,7 @@ const ROLES = [
   'Open Source Tools',
 ]
 
-// Ember-tinted particle canvas
+// Subtle floating particles — indigo/neutral
 function ParticleCanvas() {
   const canvasRef = useRef(null)
   useEffect(() => {
@@ -26,14 +26,14 @@ function ParticleCanvas() {
       reset(initial = false) {
         this.x     = Math.random() * canvas.width
         this.y     = initial ? Math.random() * canvas.height : canvas.height + 5
-        this.r     = Math.random() * 1.3 + 0.3
-        this.vx    = (Math.random() - 0.5) * 0.15
-        this.vy    = -(Math.random() * 0.3 + 0.1) // rise upward
-        this.alpha = Math.random() * 0.22 + 0.06
+        this.r     = Math.random() * 1.2 + 0.3
+        this.vx    = (Math.random() - 0.5) * 0.12
+        this.vy    = -(Math.random() * 0.25 + 0.08)
+        this.alpha = Math.random() * 0.18 + 0.05
         const t    = Math.random()
-        this.color = t < 0.5 ? `rgba(232,93,4,${this.alpha})` :
-                     t < 0.8 ? `rgba(193,18,31,${this.alpha})` :
-                                `rgba(250,163,7,${this.alpha * 0.7})`
+        this.color = t < 0.5 ? `rgba(99,102,241,${this.alpha})` :
+                     t < 0.8 ? `rgba(129,140,248,${this.alpha})` :
+                                `rgba(45,212,191,${this.alpha * 0.8})`
       }
       update() {
         this.x += this.vx; this.y += this.vy
@@ -48,7 +48,7 @@ function ParticleCanvas() {
     const init = () => {
       resize()
       particles = Array.from(
-        { length: Math.min(60, Math.floor((canvas.width * canvas.height) / 14000)) },
+        { length: Math.min(50, Math.floor((canvas.width * canvas.height) / 16000)) },
         () => new Particle()
       )
     }
@@ -73,30 +73,30 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ background: 'var(--bg-void)' }}
     >
-      {/* Night sky backgrounds */}
+      {/* Background glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse 100% 80% at 50% -5%, #0c060a 0%, #020408 60%, #010204 100%)',
+          background: 'radial-gradient(ellipse 100% 80% at 50% -5%, #0a0a18 0%, #070710 60%, #050508 100%)',
         }} />
-        {/* Distant fire — bottom left */}
+        {/* Indigo glow — bottom left */}
         <div className="animate-orb-drift-1 absolute rounded-full" style={{
           bottom: '-25%', left: '-8%',
           width: '750px', height: '650px',
-          background: 'radial-gradient(ellipse at center, rgba(193,18,31,0.1) 0%, rgba(232,93,4,0.05) 40%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.1) 0%, rgba(79,70,229,0.04) 40%, transparent 70%)',
           filter: 'blur(65px)',
         }} />
-        {/* Moonlight water — top right */}
+        {/* Teal glow — top right */}
         <div className="animate-orb-drift-2 absolute rounded-full" style={{
           top: '-20%', right: '-6%',
           width: '680px', height: '680px',
-          background: 'radial-gradient(ellipse at center, rgba(0,119,182,0.1) 0%, rgba(0,180,216,0.04) 45%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(45,212,191,0.08) 0%, rgba(20,184,166,0.03) 45%, transparent 70%)',
           filter: 'blur(70px)',
         }} />
-        {/* Deep purple mid */}
+        {/* Soft purple mid */}
         <div className="animate-orb-drift-3 absolute rounded-full" style={{
           top: '30%', left: '40%',
           width: '500px', height: '500px',
-          background: 'radial-gradient(ellipse at center, rgba(90,20,30,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(60,40,120,0.05) 0%, transparent 70%)',
           filter: 'blur(80px)',
         }} />
         <div className="absolute bottom-0 left-0 right-0 h-48" style={{
@@ -108,7 +108,7 @@ export default function Hero() {
 
       {/* Subtle dot grid */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: 'radial-gradient(circle, rgba(193,18,31,0.055) 1px, transparent 1px)',
+        backgroundImage: 'radial-gradient(circle, rgba(99,102,241,0.045) 1px, transparent 1px)',
         backgroundSize: '50px 50px',
         maskImage: 'radial-gradient(ellipse 65% 65% at 50% 50%, black 20%, transparent 100%)',
         WebkitMaskImage: 'radial-gradient(ellipse 65% 65% at 50% 50%, black 20%, transparent 100%)',
@@ -116,53 +116,51 @@ export default function Hero() {
 
       <div className="section-container relative z-10 flex flex-col items-center text-center gap-6 pt-28 pb-20">
 
-        {/* Corps rank badge */}
+        {/* Status badge */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2.5 px-5 py-2 rounded-sm"
+          className="inline-flex items-center gap-2.5 px-5 py-2 rounded-md"
           style={{
-            border: '1px solid rgba(193,18,31,0.35)',
-            background: 'rgba(193,18,31,0.05)',
-            color: 'rgba(232,93,4,0.9)',
+            border: '1px solid rgba(99,102,241,0.3)',
+            background: 'rgba(99,102,241,0.06)',
+            color: 'rgba(129,140,248,0.9)',
             fontSize: '12px',
-            fontFamily: 'var(--font-body)',
+            fontFamily: 'var(--font-mono)',
             letterSpacing: '0.08em',
-            boxShadow: '0 0 20px rgba(193,18,31,0.06)',
           }}
         >
-          <span style={{ fontSize: '14px', lineHeight: 1 }}>⚔</span>
           <span
             className="animate-pulse-dot w-1.5 h-1.5 rounded-full"
             style={{
-              background: 'var(--flame-red)',
-              boxShadow: '0 0 7px rgba(193,18,31,0.9)',
+              background: 'var(--accent)',
+              boxShadow: '0 0 7px rgba(99,102,241,0.9)',
               flexShrink: 0,
             }}
           />
           Available for opportunities
         </motion.div>
 
-        {/* Hero name — G.N. water cyan + KUMARASWAMY flame gold */}
+        {/* Hero name */}
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
           className="font-display leading-[1.05]"
-          style={{ fontSize: 'clamp(3.2rem, 9vw, 5.8rem)', letterSpacing: '0.04em' }}
+          style={{ fontSize: 'clamp(3.2rem, 9vw, 5.8rem)', letterSpacing: '0.02em' }}
         >
           <span
-            className="block font-display font-bold"
+            className="block font-display font-semibold"
             style={{
-              color: 'var(--water-cyan)',
-              fontSize: 'clamp(1.8rem, 5vw, 3rem)',
-              letterSpacing: '0.12em',
-              textShadow: '0 0 30px rgba(0,180,216,0.45)',
+              color: 'var(--teal)',
+              fontSize: 'clamp(1.6rem, 4vw, 2.6rem)',
+              letterSpacing: '0.1em',
+              textShadow: '0 0 30px rgba(45,212,191,0.4)',
               marginBottom: '0.08em',
             }}
           >G.N.</span>
-          <span className="hero-name-flame">Kumaraswamy</span>
+          <span className="hero-name-accent">Kumaraswamy</span>
         </motion.h1>
 
         {/* Typewriter */}
@@ -174,7 +172,7 @@ export default function Hero() {
         >
           <p className="font-body text-xl sm:text-2xl font-light" style={{ color: 'var(--text-secondary)' }}>
             I build{' '}
-            <span className="font-medium" style={{ color: 'var(--flame-orange)', textShadow: '0 0 18px rgba(232,93,4,0.5)' }}>
+            <span className="font-medium" style={{ color: 'var(--accent-light)' }}>
               {role}
             </span>
             <span className="block-cursor" aria-hidden="true" />
@@ -200,51 +198,51 @@ export default function Hero() {
           transition={{ delay: 0.8, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row gap-4 mt-2"
         >
-          {/* View My Work — flame sweep */}
+          {/* View My Work */}
           <a
             href="#projects"
             onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="btn-flame btn-shimmer px-8 py-3.5 rounded-sm font-display font-bold text-sm tracking-widest"
+            className="btn-accent btn-shimmer px-8 py-3.5 rounded-md font-display font-semibold text-sm tracking-wide"
             style={{
-              background: 'var(--flame-red)',
+              background: 'var(--accent)',
               color: '#fff',
-              boxShadow: '0 0 22px rgba(193,18,31,0.35)',
+              boxShadow: '0 0 22px rgba(99,102,241,0.35)',
               transition: 'box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1)',
-              letterSpacing: '0.12em',
+              letterSpacing: '0.06em',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.boxShadow = '0 0 40px rgba(193,18,31,0.6), 0 0 70px rgba(232,93,4,0.2)'
+              e.currentTarget.style.boxShadow = '0 0 40px rgba(99,102,241,0.55), 0 0 70px rgba(99,102,241,0.2)'
               e.currentTarget.style.transform = 'scale(1.04)'
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.boxShadow = '0 0 22px rgba(193,18,31,0.35)'
+              e.currentTarget.style.boxShadow = '0 0 22px rgba(99,102,241,0.35)'
               e.currentTarget.style.transform = 'scale(1)'
             }}
           >
             View My Work
           </a>
 
-          {/* GitHub — water ripple */}
+          {/* GitHub */}
           <a
             href="https://github.com/kumarswamyg2005"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-shimmer px-8 py-3.5 rounded-sm font-display font-semibold text-sm tracking-widest flex items-center gap-2 justify-center"
+            className="btn-shimmer px-8 py-3.5 rounded-md font-display font-semibold text-sm tracking-wide flex items-center gap-2 justify-center"
             style={{
-              border: '1px solid rgba(0,119,182,0.35)',
-              color: 'rgba(232,224,208,0.7)',
-              letterSpacing: '0.12em',
+              border: '1px solid rgba(45,212,191,0.3)',
+              color: 'rgba(226,232,240,0.7)',
+              letterSpacing: '0.06em',
               transition: 'border-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1)',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.borderColor = 'rgba(0,180,216,0.6)'
-              e.currentTarget.style.color = 'var(--water-cyan)'
-              e.currentTarget.style.boxShadow = '0 0 22px rgba(0,180,216,0.18)'
+              e.currentTarget.style.borderColor = 'rgba(45,212,191,0.55)'
+              e.currentTarget.style.color = 'var(--teal)'
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(45,212,191,0.15)'
               e.currentTarget.style.transform = 'scale(1.04)'
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.borderColor = 'rgba(0,119,182,0.35)'
-              e.currentTarget.style.color = 'rgba(232,224,208,0.7)'
+              e.currentTarget.style.borderColor = 'rgba(45,212,191,0.3)'
+              e.currentTarget.style.color = 'rgba(226,232,240,0.7)'
               e.currentTarget.style.boxShadow = 'none'
               e.currentTarget.style.transform = 'scale(1)'
             }}
@@ -260,13 +258,13 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.05, duration: 0.9 }}
           className="w-full mt-4 pt-8"
-          style={{ borderTop: '1px solid rgba(193,18,31,0.1)' }}
+          style={{ borderTop: '1px solid rgba(99,102,241,0.1)' }}
         >
           <p style={{
             fontSize: '10px',
-            fontFamily: 'var(--font-jp)',
-            color: 'rgba(158,148,132,0.3)',
-            letterSpacing: '0.25em',
+            fontFamily: 'var(--font-mono)',
+            color: 'rgba(148,163,184,0.35)',
+            letterSpacing: '0.2em',
             textTransform: 'uppercase',
             textAlign: 'center',
             marginBottom: '14px',
@@ -277,24 +275,22 @@ export default function Hero() {
             <div className="marquee-track">
               {[
                 'React', 'Python', 'TensorFlow', 'Node.js', 'FastAPI', 'PyTorch',
-                'TypeScript', 'MongoDB', 'Docker', 'OpenCV', 'PostgreSQL', 'Tailwind CSS',
-                'Scikit-Learn', 'Git', 'Linux', 'Pandas',
+                'Flask', 'MongoDB', 'OpenCV', 'Tailwind CSS', 'Express', 'Pandas',
                 'React', 'Python', 'TensorFlow', 'Node.js', 'FastAPI', 'PyTorch',
-                'TypeScript', 'MongoDB', 'Docker', 'OpenCV', 'PostgreSQL', 'Tailwind CSS',
-                'Scikit-Learn', 'Git', 'Linux', 'Pandas',
+                'Flask', 'MongoDB', 'OpenCV', 'Tailwind CSS', 'Express', 'Pandas',
               ].map((tech, i) => (
                 <span
                   key={i}
                   className="flex items-center font-body text-xs whitespace-nowrap"
-                  style={{ color: 'rgba(158,148,132,0.4)' }}
+                  style={{ color: 'rgba(148,163,184,0.4)' }}
                 >
                   <span
                     className="px-5"
                     style={{ transition: 'color 0.25s' }}
-                    onMouseEnter={e => e.currentTarget.style.color = 'rgba(232,93,4,0.8)'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(158,148,132,0.4)'}
+                    onMouseEnter={e => e.currentTarget.style.color = 'rgba(129,140,248,0.8)'}
+                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(148,163,184,0.4)'}
                   >{tech}</span>
-                  <span style={{ color: 'rgba(193,18,31,0.22)', fontSize: '8px' }}>·⚔·</span>
+                  <span style={{ color: 'rgba(99,102,241,0.2)', fontSize: '8px' }}>·</span>
                 </span>
               ))}
             </div>
@@ -302,15 +298,15 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll — ember */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.7 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        style={{ color: 'rgba(193,18,31,0.45)' }}
+        style={{ color: 'rgba(99,102,241,0.4)' }}
       >
-        <span style={{ fontSize: '9px', fontFamily: 'var(--font-jp)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(158,148,132,0.45)' }}>
+        <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(148,163,184,0.4)' }}>
           Scroll
         </span>
         <FiArrowDown size={13} className="animate-scroll-bounce" />

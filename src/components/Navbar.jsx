@@ -39,38 +39,35 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background:           scrolled ? 'rgba(6,9,15,0.92)' : 'transparent',
+        background:           scrolled ? 'rgba(7,7,16,0.92)' : 'transparent',
         backdropFilter:       scrolled ? 'blur(20px) saturate(140%)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(140%)' : 'none',
-        borderBottom:         scrolled ? '1px solid rgba(193,18,31,0.14)' : '1px solid transparent',
+        borderBottom:         scrolled ? '1px solid rgba(99,102,241,0.12)' : '1px solid transparent',
         padding:              scrolled ? '14px 0' : '22px 0',
         transition: 'background 0.4s ease, padding 0.4s ease, border-color 0.4s',
       }}
     >
       <div className="section-container flex items-center justify-between">
 
-        {/* Logo — GNK + 剣 kanji */}
+        {/* Logo */}
         <a
           href="#hero"
           onClick={(e) => { e.preventDefault(); handleNav('#hero') }}
-          className="logo-flicker select-none flex items-baseline gap-1"
+          className="logo-appear select-none flex items-baseline gap-1"
           aria-label="Home"
         >
           <span className="font-display font-bold text-lg" style={{ color: 'var(--text-primary)', letterSpacing: '0.05em' }}>
             GNK
           </span>
           <span
-            className="font-jp"
             style={{
-              color: 'var(--flame-gold)',
+              color: 'var(--accent)',
               fontSize: '11px',
-              opacity: 0.8,
-              textShadow: '0 0 10px rgba(250,163,7,0.65), 0 0 22px rgba(250,163,7,0.3)',
-              marginLeft: '3px',
-              fontWeight: 500,
+              opacity: 0.7,
+              marginLeft: '2px',
+              fontFamily: 'var(--font-mono)',
             }}
-            title="Ken — Sword"
-          >剣</span>
+          >.</span>
         </a>
 
         {/* Desktop nav */}
@@ -85,9 +82,8 @@ export default function Navbar() {
                 onClick={(e) => { e.preventDefault(); handleNav(href) }}
                 className={`nav-link font-body text-sm font-medium ${isActive ? 'is-active' : ''}`}
                 style={{
-                  color:      isActive ? 'var(--flame-red)' : 'var(--text-secondary)',
+                  color:      isActive ? 'var(--accent-light)' : 'var(--text-secondary)',
                   transition: 'color 0.3s ease',
-                  textShadow: isActive ? '0 0 12px rgba(193,18,31,0.5)' : 'none',
                 }}
                 onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = 'var(--text-primary)' }}
                 onMouseLeave={e => { if (!isActive) e.currentTarget.style.color = 'var(--text-secondary)' }}
@@ -98,8 +94,7 @@ export default function Navbar() {
                     layoutId="nav-underline"
                     className="absolute -bottom-1 left-0 right-0 h-px"
                     style={{
-                      background: 'linear-gradient(90deg, var(--flame-red), var(--flame-orange))',
-                      boxShadow: '0 0 8px rgba(193,18,31,0.6)',
+                      background: 'linear-gradient(90deg, var(--accent), var(--accent-light))',
                     }}
                     transition={{ type: 'spring', stiffness: 420, damping: 32 }}
                   />
@@ -109,7 +104,7 @@ export default function Navbar() {
           })}
           <a
             href="mailto:nagakumaraswamy.g23@iiits.in"
-            className="hire-me-btn px-5 py-1.5 rounded-sm font-body text-sm font-medium"
+            className="hire-me-btn px-5 py-1.5 rounded-md font-body text-sm font-medium"
           >
             Hire Me
           </a>
@@ -130,7 +125,7 @@ export default function Navbar() {
               key={i}
               animate={anim}
               className="block w-5 h-0.5 rounded origin-center"
-              style={{ background: 'var(--flame-red)' }}
+              style={{ background: 'var(--accent)' }}
             />
           ))}
         </button>
@@ -145,7 +140,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="md:hidden overflow-hidden"
-            style={{ background: 'rgba(6,9,15,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(193,18,31,0.14)' }}
+            style={{ background: 'rgba(7,7,16,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(99,102,241,0.12)' }}
           >
             <nav className="flex flex-col px-6 py-7 gap-5">
               {LINKS.map(({ label, href }) => (
@@ -155,7 +150,7 @@ export default function Navbar() {
                   onClick={(e) => { e.preventDefault(); handleNav(href) }}
                   className="font-body text-base font-medium"
                   style={{ color: 'var(--text-secondary)', transition: 'color 0.3s' }}
-                  onMouseEnter={e => e.currentTarget.style.color = 'var(--flame-red)'}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-light)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
                 >
                   {label}
@@ -163,7 +158,7 @@ export default function Navbar() {
               ))}
               <a
                 href="mailto:nagakumaraswamy.g23@iiits.in"
-                className="hire-me-btn self-start px-5 py-2 rounded-sm font-body text-sm font-medium"
+                className="hire-me-btn self-start px-5 py-2 rounded-md font-body text-sm font-medium"
               >
                 Hire Me
               </a>

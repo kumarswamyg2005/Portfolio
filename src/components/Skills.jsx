@@ -3,69 +3,49 @@ import { motion, useInView } from "framer-motion";
 import {
   SiPython,
   SiJavascript,
-  SiTypescript,
-  SiCplusplus,
   SiHtml5,
   SiCss,
   SiReact,
   SiNodedotjs,
   SiExpress,
   SiFastapi,
+  SiFlask,
   SiTensorflow,
   SiPytorch,
   SiTailwindcss,
   SiGit,
   SiGithub,
-  SiDocker,
   SiMongodb,
-  SiPostgresql,
-  SiLinux,
-  SiScikitlearn,
-  SiKeras,
   SiOpencv,
   SiPandas,
-  SiNumpy,
-  SiJupyter,
 } from "react-icons/si";
 import skills from "../data/skills";
 
 const ICON_MAP = {
   SiPython,
   SiJavascript,
-  SiTypescript,
-  SiCplusplus,
   SiHtml5,
   SiCss,
   SiReact,
   SiNodedotjs,
   SiExpress,
   SiFastapi,
+  SiFlask,
   SiTensorflow,
   SiPytorch,
   SiTailwindcss,
   SiGit,
   SiGithub,
-  SiDocker,
   SiMongodb,
-  SiPostgresql,
-  SiLinux,
-  SiScikitlearn,
-  SiKeras,
   SiOpencv,
   SiPandas,
-  SiNumpy,
-  SiJupyter,
 };
 
-// Breathing style colors
 const CATEGORY_META = {
-  Languages: { color: "#c1121f", label: "Languages" },
-  "Frameworks & Libraries": {
-    color: "#00b4d8",
-    label: "Frameworks & Libraries",
-  },
-  "Tools & Platforms": { color: "#9e9898", label: "Tools & Platforms" },
-  "AI / ML": { color: "#faa307", label: "AI / ML" },
+  Languages:               { color: "#6366f1", label: "Languages" },
+  "Frameworks & Libraries":{ color: "#2dd4bf", label: "Frameworks & Libraries" },
+  "Tools & Platforms":     { color: "#94a3b8", label: "Tools & Platforms" },
+  "AI / ML":               { color: "#818cf8", label: "AI / ML" },
 };
 
 function Badge({ name, icon, index, inView, categoryColor }) {
@@ -142,7 +122,7 @@ export default function Skills() {
       <div className="section-divider" />
       <section
         id="skills"
-        className="py-28 relative haori-pattern"
+        className="py-28 relative grid-pattern"
         style={{ background: "var(--bg-secondary)" }}
       >
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -155,7 +135,7 @@ export default function Skills() {
               height: "500px",
               borderRadius: "50%",
               background:
-                "radial-gradient(ellipse at center, rgba(193,18,31,0.05) 0%, transparent 65%)",
+                "radial-gradient(ellipse at center, rgba(99,102,241,0.05) 0%, transparent 65%)",
               filter: "blur(70px)",
             }}
           />
@@ -172,7 +152,7 @@ export default function Skills() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col gap-3 mb-16"
           >
-            <span className="label-editorial">呼吸法 · TECH STACK</span>
+            <span className="label-editorial">02 / TECH STACK</span>
             <h2
               className="font-display font-extrabold tracking-tight"
               style={{
@@ -188,7 +168,7 @@ export default function Skills() {
                 height: "1px",
                 width: "48px",
                 background:
-                  "linear-gradient(90deg, var(--flame-red), transparent)",
+                  "linear-gradient(90deg, var(--accent), transparent)",
               }}
             />
           </motion.div>
@@ -239,11 +219,11 @@ export default function Skills() {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.9, duration: 0.6 }}
             className="mt-14 font-body text-sm text-center tracking-wide"
-            style={{ color: "rgba(90,82,72,0.7)" }}
+            style={{ color: "rgba(148,163,184,0.5)" }}
           >
             … and always learning more. Currently exploring{" "}
-            <span style={{ color: "rgba(193,18,31,0.75)" }}>Rust</span> and{" "}
-            <span style={{ color: "rgba(193,18,31,0.75)" }}>
+            <span style={{ color: "var(--accent-light)" }}>Rust</span> and{" "}
+            <span style={{ color: "var(--accent-light)" }}>
               Reinforcement Learning
             </span>
             .

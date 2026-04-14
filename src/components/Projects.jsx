@@ -5,11 +5,11 @@ import { HiArrowTopRightOnSquare, HiLockClosed } from 'react-icons/hi2'
 import projects from '../data/projects'
 
 const PROJECT_META = {
-  'stocksensei':      { color: '#c1121f', kanji: '株' }, // Flame — crimson
-  'resume-builder':   { color: '#4a90d9', kanji: '履' }, // Wind — steel blue
-  'sign-bridge':      { color: '#00b4d8', kanji: '橋' }, // Water — cyan
-  'manga-translator': { color: '#faa307', kanji: '訳' }, // Thunder — gold
-  'cropscan':         { color: '#22c55e', kanji: '農' }, // Vitality — green
+  'stocksensei':      { color: '#6366f1' },
+  'resume-builder':   { color: '#4a90d9' },
+  'sign-bridge':      { color: '#2dd4bf' },
+  'manga-translator': { color: '#818cf8' },
+  'cropscan':         { color: '#22c55e' },
 }
 
 const fadeUp = {
@@ -24,21 +24,20 @@ function ProjectCard({ project, index }) {
   const { id, title, description, tags, github, demoUrl, featured } = project
   const hasDemo = Boolean(demoUrl)
   const [tipped, setTipped] = useState(false)
-  const meta  = PROJECT_META[id] || { color: '#c1121f', kanji: '技' }
+  const meta  = PROJECT_META[id] || { color: '#6366f1' }
   const color = meta.color
 
   return (
     <motion.article
       custom={index}
       variants={fadeUp}
-      data-kanji={meta.kanji}
       className={`relative flex flex-col h-full p-6 ${featured ? 'project-card-featured' : 'project-card'}`}
     >
-      {/* Gold seal featured badge */}
+      {/* Featured badge */}
       {featured && (
-        <div className="featured-badge absolute top-4 right-4" style={{ fontSize: '11px' }}>
-          <span style={{ fontSize: '13px', lineHeight: 1 }}>★</span>
-          <span style={{ fontSize: '9px', letterSpacing: '0.05em', fontFamily: 'var(--font-jp)' }}>特選</span>
+        <div className="featured-badge absolute top-4 right-4">
+          <span style={{ fontSize: '11px' }}>★</span>
+          <span>FEAT</span>
         </div>
       )}
 
@@ -47,29 +46,28 @@ function ProjectCard({ project, index }) {
         className="h-0.5 w-full mb-5 rounded-full"
         style={{
           background: `linear-gradient(90deg, ${color} 0%, ${color}55 65%, transparent 100%)`,
-          boxShadow: `0 0 8px ${color}40`,
-          transition: 'box-shadow 0.4s ease',
+          boxShadow: `0 0 8px ${color}35`,
         }}
       />
 
       <h3
         className="card-title font-display font-bold text-xl tracking-tight mb-3 pr-16"
-        style={{ color: 'var(--text-primary)', transition: 'color 0.3s ease', letterSpacing: '0.02em' }}
+        style={{ color: 'var(--text-primary)', transition: 'color 0.3s ease' }}
       >
         {title}
       </h3>
 
-      <p className="font-body text-sm flex-1" style={{ color: 'var(--text-secondary)', lineHeight: '1.75', position: 'relative', zIndex: 1 }}>
+      <p className="font-body text-sm flex-1" style={{ color: 'var(--text-secondary)', lineHeight: '1.75' }}>
         {description}
       </p>
 
       {/* Tech tags */}
-      <div className="flex flex-wrap gap-2 mt-5" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="flex flex-wrap gap-2 mt-5">
         {tags.map((tag) => (
           <span
             key={tag}
             className="tag-item"
-            style={{ borderColor: `${color}20` }}
+            style={{ borderColor: `${color}18` }}
           >
             {tag}
           </span>
@@ -77,12 +75,12 @@ function ProjectCard({ project, index }) {
       </div>
 
       {/* Actions */}
-      <div className="flex gap-3 mt-6" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="flex gap-3 mt-6">
         <a
           href={github}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-shimmer flex items-center gap-2 px-4 py-2 rounded-sm font-body text-sm"
+          className="btn-shimmer flex items-center gap-2 px-4 py-2 rounded-md font-body text-sm"
           style={{
             border: '1px solid rgba(255,255,255,0.07)',
             color: 'var(--text-secondary)',
@@ -91,7 +89,7 @@ function ProjectCard({ project, index }) {
           onMouseEnter={e => {
             e.currentTarget.style.borderColor = `${color}45`
             e.currentTarget.style.color = 'var(--text-primary)'
-            e.currentTarget.style.boxShadow = `0 0 14px ${color}25`
+            e.currentTarget.style.boxShadow = `0 0 14px ${color}20`
             e.currentTarget.style.transform = 'scale(1.04)'
             const svg = e.currentTarget.querySelector('svg')
             if (svg) svg.style.transform = 'rotate(5deg)'
@@ -114,7 +112,7 @@ function ProjectCard({ project, index }) {
             href={demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-shimmer flex items-center gap-2 px-4 py-2 rounded-sm font-body text-sm"
+            className="btn-shimmer flex items-center gap-2 px-4 py-2 rounded-md font-body text-sm"
             style={{
               background: `${color}10`,
               border: `1px solid ${color}40`,
@@ -123,7 +121,7 @@ function ProjectCard({ project, index }) {
             }}
             onMouseEnter={e => {
               e.currentTarget.style.background = color
-              e.currentTarget.style.color = '#000'
+              e.currentTarget.style.color = '#fff'
               e.currentTarget.style.transform = 'scale(1.04)'
             }}
             onMouseLeave={e => {
@@ -142,7 +140,7 @@ function ProjectCard({ project, index }) {
             className="btn-coming-soon relative flex items-center gap-2 px-4 py-2 font-body text-sm cursor-not-allowed select-none"
           >
             <HiLockClosed size={13} />
-            <span className="font-jp" style={{ fontSize: '10px', opacity: 0.6 }}>任務未完</span>
+            Coming Soon
             <AnimatePresence>
               {tipped && (
                 <motion.span
@@ -150,8 +148,8 @@ function ProjectCard({ project, index }) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1.5 rounded-sm glass font-body text-xs"
-                  style={{ color: 'var(--text-secondary)', border: '1px solid rgba(193,18,31,0.15)' }}
+                  className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1.5 rounded-md glass font-body text-xs"
+                  style={{ color: 'var(--text-secondary)', border: '1px solid rgba(99,102,241,0.15)' }}
                 >
                   Deploy link coming soon!
                 </motion.span>
@@ -177,7 +175,7 @@ export default function Projects() {
           <div style={{
             position: 'absolute', bottom: '25%', right: '-5%',
             width: '480px', height: '480px', borderRadius: '50%',
-            background: 'radial-gradient(ellipse at center, rgba(250,163,7,0.05) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.05) 0%, transparent 70%)',
             filter: 'blur(80px)',
           }} />
         </div>
@@ -189,14 +187,14 @@ export default function Projects() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col gap-3 mb-16"
           >
-            <span className="label-editorial">任務 · FEATURED PROJECTS</span>
+            <span className="label-editorial">03 / PROJECTS</span>
             <h2
               className="font-display font-extrabold tracking-tight"
               style={{ fontSize: 'clamp(2rem,5vw,3.25rem)', lineHeight: '1.1', color: 'var(--text-primary)' }}
             >
               Featured <span className="gradient-text">Projects</span>
             </h2>
-            <div style={{ height: '1px', width: '48px', background: 'linear-gradient(90deg, var(--flame-red), transparent)' }} />
+            <div style={{ height: '1px', width: '48px', background: 'linear-gradient(90deg, var(--accent), transparent)' }} />
             <p className="font-body text-sm max-w-xl mt-1" style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>
               A selection of projects I've built — spanning AI/ML systems, full-stack apps, and developer tools.
             </p>
@@ -222,20 +220,20 @@ export default function Projects() {
               href="https://github.com/kumarswamyg2005"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-shimmer flex items-center gap-2.5 px-6 py-3 rounded-sm font-body text-sm"
+              className="btn-shimmer flex items-center gap-2.5 px-6 py-3 rounded-md font-body text-sm"
               style={{
-                border: '1px solid rgba(193,18,31,0.2)',
+                border: '1px solid rgba(99,102,241,0.2)',
                 color: 'var(--text-secondary)',
                 transition: 'border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'rgba(193,18,31,0.5)'
-                e.currentTarget.style.color = 'var(--flame-orange)'
-                e.currentTarget.style.boxShadow = '0 0 18px rgba(193,18,31,0.12)'
+                e.currentTarget.style.borderColor = 'rgba(99,102,241,0.5)'
+                e.currentTarget.style.color = 'var(--accent-light)'
+                e.currentTarget.style.boxShadow = '0 0 18px rgba(99,102,241,0.12)'
                 e.currentTarget.style.transform = 'scale(1.03)'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'rgba(193,18,31,0.2)'
+                e.currentTarget.style.borderColor = 'rgba(99,102,241,0.2)'
                 e.currentTarget.style.color = 'var(--text-secondary)'
                 e.currentTarget.style.boxShadow = 'none'
                 e.currentTarget.style.transform = 'scale(1)'

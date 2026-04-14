@@ -52,12 +52,11 @@ export default function Contact() {
       <div className="section-divider" />
       <section id="contact" className="pt-20 pb-28 relative" style={{ background: 'var(--bg-secondary)' }}>
 
-        {/* Dying embers — warm crimson from center */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div style={{
             position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)',
             width: '750px', height: '500px', borderRadius: '50%',
-            background: 'radial-gradient(ellipse at center, rgba(193,18,31,0.055) 0%, rgba(232,93,4,0.02) 45%, transparent 68%)',
+            background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.05) 0%, rgba(79,70,229,0.02) 45%, transparent 68%)',
             filter: 'blur(70px)',
           }} />
         </div>
@@ -69,14 +68,14 @@ export default function Contact() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col gap-3 mb-5"
           >
-            <span className="label-editorial">連絡 · GET IN TOUCH</span>
+            <span className="label-editorial">04 / GET IN TOUCH</span>
             <h2
               className="font-display font-extrabold tracking-tight"
               style={{ fontSize: 'clamp(2rem,5vw,3.25rem)', lineHeight: '1.1', color: 'var(--text-primary)' }}
             >
               Get In <span className="gradient-text">Touch</span>
             </h2>
-            <div style={{ height: '1px', width: '48px', background: 'linear-gradient(90deg, var(--flame-red), transparent)' }} />
+            <div style={{ height: '1px', width: '48px', background: 'linear-gradient(90deg, var(--accent), transparent)' }} />
           </motion.div>
 
           <motion.p
@@ -115,7 +114,7 @@ export default function Contact() {
                 onMouseEnter={e => {
                   e.currentTarget.style.borderColor = `${color}28`
                   e.currentTarget.style.boxShadow = `0 0 28px rgba(250,163,7,0.09), 0 0 50px ${color}07, 0 12px 40px rgba(0,0,0,0.5)`
-                  e.currentTarget.style.background = 'rgba(15,10,8,0.75)'
+                  e.currentTarget.style.background = 'rgba(11,11,22,0.85)'
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.borderColor = ''
@@ -136,7 +135,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <p className="font-jp text-[10px] uppercase mb-1" style={{ color: 'var(--text-muted)', letterSpacing: '0.18em' }}>
+                  <p className="font-mono text-[10px] uppercase mb-1" style={{ color: 'var(--text-muted)', letterSpacing: '0.18em' }}>
                     {label}
                   </p>
                   <p className="font-display font-medium text-sm truncate" style={{ color: 'rgba(232,224,208,0.75)', transition: 'color 0.2s ease' }}>
@@ -164,17 +163,17 @@ export default function Contact() {
           >
             <a
               href="mailto:nagakumaraswamy.g23@iiits.in"
-              className="btn-flame btn-shimmer px-10 py-4 rounded-sm font-display font-bold tracking-widest"
+              className="btn-accent btn-shimmer px-10 py-4 rounded-sm font-display font-bold tracking-widest"
               style={{
-                background: 'var(--flame-red)',
+                background: 'var(--accent)',
                 color: '#fff',
                 fontSize: '0.9rem',
                 letterSpacing: '0.12em',
-                boxShadow: '0 0 28px rgba(193,18,31,0.35)',
+                boxShadow: '0 0 28px rgba(99,102,241,0.35)',
                 transition: 'box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1)',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.boxShadow = '0 0 50px rgba(193,18,31,0.6), 0 0 90px rgba(232,93,4,0.2)'
+                e.currentTarget.style.boxShadow = '0 0 50px rgba(99,102,241,0.55), 0 0 90px rgba(99,102,241,0.2)'
                 e.currentTarget.style.transform = 'scale(1.05)'
               }}
               onMouseLeave={e => {
