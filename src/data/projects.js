@@ -34,6 +34,56 @@ const projects = [
     featured: true,
   },
   {
+    id: 'mental-health-signal-detector',
+    title: 'Early Mental Health Signal Detector',
+    description:
+      'Privacy-first NLP decision-support tool for counselors and clinicians. Combines BERT embeddings with LIWC-style linguistic features, LIME explanations, and a Streamlit dashboard for local-only risk signal review.',
+    tags: ['Python', 'BERT', 'NLP', 'LIME', 'Streamlit', 'PyTorch'],
+    github: 'https://github.com/kumarswamyg2005/Early-Mental-Health-Signal-Detector',
+    demoUrl: '',
+    featured: true,
+  },
+  {
+    id: 'real-air',
+    title: 'Real-Air',
+    description:
+      'Real-time air quality and health-risk predictor for major Indian cities. Uses OpenAQ and Open-Meteo data, PyTorch LSTM forecasting, Prophet baselines, FastAPI, and a React + Leaflet geospatial dashboard.',
+    tags: ['React', 'FastAPI', 'PyTorch', 'LSTM', 'Leaflet', 'SQLite'],
+    github: 'https://github.com/kumarswamyg2005/Real-Air-Real-time-Air-Quality-Health-Risk-Predictor',
+    demoUrl: '',
+    featured: true,
+  },
+  {
+    id: 'pricing-intelligence',
+    title: 'Competitive Pricing Intelligence Dashboard',
+    description:
+      'Business analytics dashboard that turns competitor pricing, discounts, and customer review sentiment into strategy recommendations. Includes Selenium data capture, ARIMA forecasting, Groq LLM insights, and Slack sharing.',
+    tags: ['Python', 'Streamlit', 'Plotly', 'Selenium', 'ARIMA', 'Groq'],
+    github: 'https://github.com/kumarswamyg2005/Competitive-Pricing-Intelligence-Dashboard',
+    demoUrl: '',
+    featured: false,
+  },
+  {
+    id: 'anime-tracker',
+    title: 'AniVault — Anime Tracker',
+    description:
+      'Modern anime and manga tracking app with Netflix-style browsing, library status management, detail modals, comparison tools, profile stats, theme switching, and localStorage persistence.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+    github: 'https://github.com/kumarswamyg2005/Anime-Tracker',
+    demoUrl: '',
+    featured: false,
+  },
+  {
+    id: 'nlp-sentiment-dashboard',
+    title: 'NLP Sentiment & Text Analytics Dashboard',
+    description:
+      'Full-stack text analytics platform for product review intelligence. Runs sentiment, NER, keyword extraction, BERTopic topic modeling, and BART summarization behind an interactive React + FastAPI dashboard.',
+    tags: ['React', 'FastAPI', 'Transformers', 'spaCy', 'KeyBERT', 'BERTopic'],
+    github: 'https://github.com/kumarswamyg2005/NLP-Sentiment-Text-Analytics-Dashboard',
+    demoUrl: '',
+    featured: false,
+  },
+  {
     id: 'resume-builder',
     title: 'AI-Powered Resume Builder',
     description:

@@ -4,19 +4,20 @@ A state-of-the-art personal portfolio built with **React + Vite + Tailwind CSS +
 
 ## Tech Stack
 
-| Tool            | Purpose                          |
-|-----------------|----------------------------------|
-| React 18        | UI framework                     |
-| Vite 5          | Build tool & dev server          |
-| Tailwind CSS 3  | Utility-first styling            |
-| Framer Motion   | Scroll animations, transitions   |
-| React Icons     | Icon library (SI, HI2, FI sets)  |
+| Tool           | Purpose                         |
+| -------------- | ------------------------------- |
+| React 18       | UI framework                    |
+| Vite 5         | Build tool & dev server         |
+| Tailwind CSS 3 | Utility-first styling           |
+| Framer Motion  | Scroll animations, transitions  |
+| React Icons    | Icon library (SI, HI2, FI sets) |
 
 ---
 
 ## Local Development
 
 ### Prerequisites
+
 - Node.js 18+ (check: `node -v`)
 - npm 9+ (check: `npm -v`)
 
@@ -54,6 +55,7 @@ vercel             # deploy from project root
 ```
 
 Follow the prompts. Vercel auto-detects Vite. Use these settings if asked:
+
 - **Framework:** Vite
 - **Build command:** `npm run build`
 - **Output directory:** `dist`
@@ -75,15 +77,21 @@ Follow the prompts. Vercel auto-detects Vite. Use these settings if asked:
 1. Drop your photo (e.g. `profile.jpg`) into `/public/`.
 2. In `src/components/About.jsx`, replace the placeholder `<div>` with:
    ```jsx
-   <img src="/profile.jpg" alt="G.N. Kumaraswamy" className="w-full h-full object-cover" />
+   <img
+     src="/profile.jpg"
+     alt="G.N. Kumaraswamy"
+     className="w-full h-full object-cover"
+   />
    ```
 
 ### Update project links
 
 Open `src/data/projects.js`. For each project, set `demoUrl` to the live URL when deployed:
+
 ```js
 demoUrl: 'https://your-app.vercel.app',
 ```
+
 The card will automatically switch from "Coming Soon" to a live "Live Demo" button.
 
 Also update each `github` URL to the specific repository page.
@@ -107,9 +115,11 @@ In `src/components/Footer.jsx`, add more social icons following the existing Git
 ### Change accent colour
 
 Open `tailwind.config.js` and change:
+
 ```js
 accent: '#00d4ff',  // ← change to any hex colour
 ```
+
 This propagates everywhere via Tailwind utilities.
 
 ### Change fonts
@@ -153,4 +163,5 @@ Portfolio/
 ## License
 
 MIT — free to use and modify for personal use.
+
 # Portfolio

@@ -5,11 +5,16 @@ import { HiArrowTopRightOnSquare, HiLockClosed } from 'react-icons/hi2'
 import projects from '../data/projects'
 
 const PROJECT_META = {
-  'stocksensei':      { color: '#6366f1' },
-  'resume-builder':   { color: '#4a90d9' },
-  'sign-bridge':      { color: '#2dd4bf' },
-  'manga-translator': { color: '#818cf8' },
-  'cropscan':         { color: '#22c55e' },
+  'cropscan':                      { color: '#22c55e' },
+  'stocksensei':                   { color: '#6366f1' },
+  'mental-health-signal-detector': { color: '#f43f5e' },
+  'real-air':                      { color: '#06b6d4' },
+  'pricing-intelligence':          { color: '#f59e0b' },
+  'anime-tracker':                 { color: '#ec4899' },
+  'nlp-sentiment-dashboard':       { color: '#8b5cf6' },
+  'resume-builder':                { color: '#4a90d9' },
+  'sign-bridge':                   { color: '#2dd4bf' },
+  'manga-translator':              { color: '#818cf8' },
 }
 
 const fadeUp = {
@@ -196,14 +201,14 @@ export default function Projects() {
             </h2>
             <div style={{ height: '1px', width: '48px', background: 'linear-gradient(90deg, var(--accent), transparent)' }} />
             <p className="font-body text-sm max-w-xl mt-1" style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>
-              A selection of projects I've built — spanning AI/ML systems, full-stack apps, and developer tools.
+              A selection of projects I've built across applied AI, full-stack dashboards, data products, and developer tools.
             </p>
           </motion.div>
 
           <motion.div
             initial="hidden"
             animate={inView ? 'show' : 'hidden'}
-            className="grid sm:grid-cols-2 gap-5"
+            className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5"
           >
             {projects.map((project, idx) => (
               <ProjectCard key={project.id} project={project} index={idx} />
