@@ -1,5 +1,6 @@
 import { SiGithub } from 'react-icons/si'
 import { FaLinkedinIn } from 'react-icons/fa6'
+import { HiPaperAirplane } from 'react-icons/hi2'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -8,13 +9,11 @@ export default function Footer() {
     <footer className="relative overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
       <div className="section-divider" />
 
-      {/* Subtle indigo glow */}
+      {/* Subtle footer wash */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
+        className="absolute inset-x-0 top-0 h-40 pointer-events-none"
         style={{
-          width: '600px', height: '200px',
-          background: 'radial-gradient(ellipse at center top, rgba(99,102,241,0.06) 0%, transparent 70%)',
-          filter: 'blur(40px)',
+          background: 'linear-gradient(180deg, rgba(56,189,248,0.08), rgba(251,113,133,0.04), transparent)',
         }}
       />
 
@@ -25,8 +24,8 @@ export default function Footer() {
             What are you waiting for
           </p>
           <h2
-            className="font-display font-extrabold tracking-tight leading-[1.05]"
-            style={{ fontSize: 'clamp(2.4rem,6vw,5.5rem)', color: 'rgba(226,232,240,0.85)' }}
+            className="footer-heading font-display font-extrabold leading-[1.05]"
+            style={{ color: 'rgba(226,232,240,0.88)' }}
           >
             Let's build something<br />
             <span className="gradient-text">remarkable.</span>
@@ -35,7 +34,7 @@ export default function Footer() {
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <a
               href="mailto:nagakumaraswamy.g23@iiits.in"
-              className="btn-accent btn-shimmer px-7 py-3 rounded-md font-display font-bold text-sm tracking-wide"
+              className="btn-accent btn-shimmer inline-flex items-center gap-2 px-7 py-3 rounded-md font-display font-bold text-sm tracking-wide"
               style={{
                 background: 'var(--accent)',
                 color: '#fff',
@@ -52,7 +51,8 @@ export default function Footer() {
                 e.currentTarget.style.transform = 'scale(1)'
               }}
             >
-              Say Hello →
+              <HiPaperAirplane size={15} />
+              Say Hello
             </a>
             <span className="font-body text-sm" style={{ color: 'rgba(148,163,184,0.45)' }}>
               nagakumaraswamy.g23@iiits.in

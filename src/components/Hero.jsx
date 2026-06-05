@@ -5,10 +5,10 @@ import { SiGithub } from 'react-icons/si'
 import useTypewriter from '../hooks/useTypewriter'
 
 const ROLES = [
-  'Full-Stack Web Apps',
-  'AI / ML Systems',
-  'Deep Learning Models',
-  'Open Source Tools',
+  'AI Product Systems',
+  'Agentic Developer Tools',
+  'Full-Stack ML Platforms',
+  'Immersive Web Experiences',
 ]
 
 // Subtle floating particles — indigo/neutral
@@ -76,28 +76,18 @@ export default function Hero() {
       {/* Background glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse 100% 80% at 50% -5%, #0a0a18 0%, #070710 60%, #050508 100%)',
+          background: 'linear-gradient(180deg, #050609 0%, #071018 44%, #080a0f 100%)',
         }} />
-        {/* Indigo glow — bottom left */}
-        <div className="animate-orb-drift-1 absolute rounded-full" style={{
-          bottom: '-25%', left: '-8%',
-          width: '750px', height: '650px',
-          background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.1) 0%, rgba(79,70,229,0.04) 40%, transparent 70%)',
-          filter: 'blur(65px)',
+        <div className="absolute inset-0" style={{
+          backgroundImage:
+            'linear-gradient(115deg, transparent 0%, rgba(56,189,248,0.13) 30%, transparent 54%, rgba(245,158,11,0.11) 75%, transparent 100%), linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)',
+          backgroundSize: '100% 100%, 64px 64px, 64px 64px',
+          maskImage: 'linear-gradient(180deg, black 0%, black 72%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(180deg, black 0%, black 72%, transparent 100%)',
         }} />
-        {/* Teal glow — top right */}
-        <div className="animate-orb-drift-2 absolute rounded-full" style={{
-          top: '-20%', right: '-6%',
-          width: '680px', height: '680px',
-          background: 'radial-gradient(ellipse at center, rgba(45,212,191,0.08) 0%, rgba(20,184,166,0.03) 45%, transparent 70%)',
-          filter: 'blur(70px)',
-        }} />
-        {/* Soft purple mid */}
-        <div className="animate-orb-drift-3 absolute rounded-full" style={{
-          top: '30%', left: '40%',
-          width: '500px', height: '500px',
-          background: 'radial-gradient(ellipse at center, rgba(60,40,120,0.05) 0%, transparent 70%)',
-          filter: 'blur(80px)',
+        <div className="absolute inset-x-0 top-0 h-44" style={{
+          background: 'linear-gradient(180deg, rgba(56,189,248,0.12), transparent)',
+          opacity: 0.65,
         }} />
         <div className="absolute bottom-0 left-0 right-0 h-48" style={{
           background: 'linear-gradient(to top, var(--bg-primary), transparent)',
@@ -110,8 +100,8 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none" style={{
         backgroundImage: 'radial-gradient(circle, rgba(99,102,241,0.045) 1px, transparent 1px)',
         backgroundSize: '50px 50px',
-        maskImage: 'radial-gradient(ellipse 65% 65% at 50% 50%, black 20%, transparent 100%)',
-        WebkitMaskImage: 'radial-gradient(ellipse 65% 65% at 50% 50%, black 20%, transparent 100%)',
+        maskImage: 'linear-gradient(180deg, transparent 0%, black 16%, black 72%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 16%, black 72%, transparent 100%)',
       }} />
 
       <div className="section-container relative z-10 flex flex-col items-center text-center gap-6 pt-28 pb-20">
@@ -147,15 +137,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display leading-[1.05]"
-          style={{ fontSize: 'clamp(3.2rem, 9vw, 5.8rem)', letterSpacing: '0.02em' }}
+          className="hero-title font-display leading-[1.05]"
         >
           <span
-            className="block font-display font-semibold"
+            className="hero-initials block font-display font-semibold"
             style={{
               color: 'var(--teal)',
-              fontSize: 'clamp(1.6rem, 4vw, 2.6rem)',
-              letterSpacing: '0.1em',
               textShadow: '0 0 30px rgba(45,212,191,0.4)',
               marginBottom: '0.08em',
             }}
@@ -184,11 +171,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.65, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-lg font-body text-base sm:text-lg"
+          className="hero-description font-body text-base sm:text-lg"
           style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}
         >
-          B.Tech CSE · 3rd Year · IIIT Sri City — crafting intelligent systems
-          and seamless interfaces that push boundaries.
+          B.Tech CSE · 3rd Year · IIIT Sri City — shipping AI products, agent
+          systems, and polished full-stack interfaces from idea to working repo.
         </motion.p>
 
         {/* CTAs */}
@@ -219,7 +206,7 @@ export default function Hero() {
               e.currentTarget.style.transform = 'scale(1)'
             }}
           >
-            View My Work
+            View New Projects
           </a>
 
           {/* GitHub */}

@@ -20,10 +20,9 @@ export default {
         'muted-lo':     '#5a5248',
       },
       fontFamily: {
-        display: ['"Shippori Mincho"', '"Noto Serif JP"', 'serif'],
+        display: ['"Space Grotesk"', '"Inter"', 'sans-serif'],
         body:    ['"Inter"', 'sans-serif'],
         mono:    ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-        jp:      ['"Noto Serif JP"', 'serif'],
       },
       transitionTimingFunction: {
         'expo-out': 'cubic-bezier(0.16, 1, 0.3, 1)',

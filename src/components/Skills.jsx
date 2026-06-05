@@ -129,14 +129,10 @@ export default function Skills() {
           <div
             style={{
               position: "absolute",
-              top: "30%",
-              left: "-8%",
-              width: "500px",
-              height: "500px",
-              borderRadius: "50%",
+              inset: "0",
               background:
-                "radial-gradient(ellipse at center, rgba(99,102,241,0.05) 0%, transparent 65%)",
-              filter: "blur(70px)",
+                "linear-gradient(135deg, rgba(45,212,191,0.07), transparent 36%, rgba(245,158,11,0.05) 74%, transparent)",
+              opacity: 0.7,
             }}
           />
         </div>
@@ -154,12 +150,7 @@ export default function Skills() {
           >
             <span className="label-editorial">02 / TECH STACK</span>
             <h2
-              className="font-display font-extrabold tracking-tight"
-              style={{
-                fontSize: "clamp(2rem,5vw,3.25rem)",
-                lineHeight: "1.1",
-                color: "var(--text-primary)",
-              }}
+              className="section-heading"
             >
               Skills &amp; <span className="gradient-text">Tech Stack</span>
             </h2>

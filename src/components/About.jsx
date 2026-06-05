@@ -48,14 +48,11 @@ export default function About() {
           <div
             style={{
               position: "absolute",
-              top: "20%",
-              right: "-5%",
-              width: "550px",
-              height: "550px",
-              borderRadius: "50%",
+              inset: "0 0 auto 0",
+              height: "280px",
               background:
-                "radial-gradient(ellipse at center, rgba(99,102,241,0.05) 0%, transparent 65%)",
-              filter: "blur(65px)",
+                "linear-gradient(120deg, rgba(56,189,248,0.08), transparent 42%, rgba(251,113,133,0.05))",
+              opacity: 0.75,
             }}
           />
         </div>
@@ -72,12 +69,7 @@ export default function About() {
             </motion.span>
             <motion.h2
               variants={fadeUp}
-              className="font-display font-extrabold tracking-tight"
-              style={{
-                fontSize: "clamp(2rem,5vw,3.25rem)",
-                lineHeight: "1.1",
-                color: "var(--text-primary)",
-              }}
+              className="section-heading"
             >
               About <span className="gradient-text">Me</span>
             </motion.h2>

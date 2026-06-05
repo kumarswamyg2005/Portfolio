@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { HiEnvelope, HiPhone } from 'react-icons/hi2'
+import { HiEnvelope, HiPaperAirplane, HiPhone } from 'react-icons/hi2'
 import { SiGithub } from 'react-icons/si'
 import { FaLinkedinIn } from 'react-icons/fa6'
 
@@ -54,10 +54,9 @@ export default function Contact() {
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div style={{
-            position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)',
-            width: '750px', height: '500px', borderRadius: '50%',
-            background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.05) 0%, rgba(79,70,229,0.02) 45%, transparent 68%)',
-            filter: 'blur(70px)',
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(115deg, transparent, rgba(56,189,248,0.07) 34%, transparent 58%, rgba(251,113,133,0.05))',
+            opacity: 0.78,
           }} />
         </div>
 
@@ -70,8 +69,7 @@ export default function Contact() {
           >
             <span className="label-editorial">04 / GET IN TOUCH</span>
             <h2
-              className="font-display font-extrabold tracking-tight"
-              style={{ fontSize: 'clamp(2rem,5vw,3.25rem)', lineHeight: '1.1', color: 'var(--text-primary)' }}
+              className="section-heading"
             >
               Get In <span className="gradient-text">Touch</span>
             </h2>
@@ -163,7 +161,7 @@ export default function Contact() {
           >
             <a
               href="mailto:nagakumaraswamy.g23@iiits.in"
-              className="btn-accent btn-shimmer px-10 py-4 rounded-sm font-display font-bold tracking-widest"
+              className="btn-accent btn-shimmer inline-flex items-center gap-2 px-10 py-4 rounded-sm font-display font-bold tracking-widest"
               style={{
                 background: 'var(--accent)',
                 color: '#fff',
@@ -177,11 +175,12 @@ export default function Contact() {
                 e.currentTarget.style.transform = 'scale(1.05)'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.boxShadow = '0 0 28px rgba(193,18,31,0.35)'
+                e.currentTarget.style.boxShadow = '0 0 28px rgba(99,102,241,0.35)'
                 e.currentTarget.style.transform = 'scale(1)'
               }}
             >
-              Say Hello →
+              <HiPaperAirplane size={16} />
+              Say Hello
             </a>
           </motion.div>
         </div>
