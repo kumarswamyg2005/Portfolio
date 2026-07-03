@@ -10,6 +10,7 @@ export default defineConfig({
           'react-vendor':  ['react', 'react-dom'],
           'motion-vendor': ['framer-motion'],
           'icons-vendor':  ['react-icons'],
+          'three-vendor':  ['three', '@react-three/fiber', '@react-three/drei'],
         },
       },
     },

@@ -123,7 +123,7 @@ export default function Skills() {
       <section
         id="skills"
         className="py-28 relative grid-pattern"
-        style={{ background: "var(--bg-secondary)" }}
+        style={{ background: "var(--bg-section-alt)" }}
       >
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div

@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { HiEnvelope, HiPaperAirplane, HiPhone } from 'react-icons/hi2'
 import { SiGithub } from 'react-icons/si'
 import { FaLinkedinIn } from 'react-icons/fa6'
+import { confettiBurst } from '../lib/eggs'
 
 const CONTACT_ITEMS = [
   {
@@ -50,7 +51,7 @@ export default function Contact() {
   return (
     <>
       <div className="section-divider" />
-      <section id="contact" className="pt-20 pb-28 relative" style={{ background: 'var(--bg-secondary)' }}>
+      <section id="contact" className="pt-20 pb-28 relative" style={{ background: 'var(--bg-section-alt)' }}>
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div style={{
@@ -161,6 +162,7 @@ export default function Contact() {
           >
             <a
               href="mailto:nagakumaraswamy.g23@iiits.in"
+              onClick={(e) => confettiBurst(e.clientX / window.innerWidth, e.clientY / window.innerHeight)}
               className="btn-accent btn-shimmer inline-flex items-center gap-2 px-10 py-4 rounded-sm font-display font-bold tracking-widest"
               style={{
                 background: 'var(--accent)',

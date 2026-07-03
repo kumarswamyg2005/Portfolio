@@ -1,12 +1,60 @@
+import { useState, useRef } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { SiGithub } from 'react-icons/si'
 import { FaLinkedinIn } from 'react-icons/fa6'
 import { HiPaperAirplane } from 'react-icons/hi2'
+import { toast, confettiBurst } from '../lib/eggs'
+
+const CAT_PHRASES = ['meow~', 'purrr…', 'mrrp?', 'nyaa!', '*stretches*', 'feed me pixels']
+
+function FooterCat() {
+  const [bubble, setBubble] = useState(null)
+  const [hearts, setHearts] = useState([])
+  const pets = useRef(0)
+
+  const pet = () => {
+    pets.current += 1
+    setBubble(CAT_PHRASES[Math.floor(Math.random() * CAT_PHRASES.length)])
+    setTimeout(() => setBubble(null), 1600)
+
+    const id = Date.now()
+    setHearts((h) => [...h.slice(-5), { id, x: (Math.random() - 0.5) * 40 }])
+    setTimeout(() => setHearts((h) => h.filter((x) => x.id !== id)), 1400)
+
+    if (pets.current === 7) {
+      confettiBurst(0.5, 0.85)
+      toast('The cat approves of you. +100 karma', '🐾')
+    }
+  }
+
+  return (
+    <button className="footer-cat" onClick={pet} aria-label="Pet the cat" title="pet me">
+      <AnimatePresence>
+        {bubble && (
+          <motion.span
+            key={bubble + Math.random()}
+            className="footer-cat-bubble"
+            initial={{ opacity: 0, y: 6, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6 }}
+          >
+            {bubble}
+          </motion.span>
+        )}
+      </AnimatePresence>
+      {hearts.map((h) => (
+        <span key={h.id} className="footer-cat-heart" style={{ '--hx': `${h.x}px` }}>❤</span>
+      ))}
+      <span className="footer-cat-emoji" role="img" aria-hidden="true">🐈‍⬛</span>
+    </button>
+  )
+}
 
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
+    <footer className="relative" style={{ background: 'var(--bg-section)' }}>
       <div className="section-divider" />
 
       {/* Subtle footer wash */}
@@ -16,6 +64,8 @@ export default function Footer() {
           background: 'linear-gradient(180deg, rgba(56,189,248,0.08), rgba(251,113,133,0.04), transparent)',
         }}
       />
+
+      <FooterCat />
 
       <div className="section-container relative z-10 pt-16 pb-10">
 
@@ -71,7 +121,8 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="font-body text-xs tracking-wide order-last sm:order-none" style={{ color: 'rgba(148,163,184,0.4)' }}>
-            Built by G.N. Kumaraswamy · {year}
+            Built with 🖤 &amp; three.js by G.N. Kumaraswamy · {year}
+            <span className="footer-hint"> · psst: try pressing `</span>
           </p>
 
           {/* Social */}

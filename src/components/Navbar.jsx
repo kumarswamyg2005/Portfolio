@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useActiveSection from '../hooks/useActiveSection'
+import { scrollToSection } from '../lib/scroll'
+import { emitEgg, toast } from '../lib/eggs'
 
 const LINKS = [
   { label: 'About',    href: '#about'    },
@@ -29,7 +31,24 @@ export default function Navbar() {
 
   const handleNav = (href) => {
     setOpen(false)
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    scrollToSection(href)
+  }
+
+  // Easter egg: 5 quick logo clicks → barrel roll
+  const logoClicks = useRef({ count: 0, timer: null })
+  const handleLogoClick = (e) => {
+    e.preventDefault()
+    handleNav('#hero')
+    const lc = logoClicks.current
+    lc.count += 1
+    clearTimeout(lc.timer)
+    lc.timer = setTimeout(() => { lc.count = 0 }, 1800)
+    if (lc.count === 3) toast('keep clicking…', '👀')
+    if (lc.count >= 5) {
+      lc.count = 0
+      emitEgg('barrel-roll')
+      toast('DO A BARREL ROLL!', '🌀')
+    }
   }
 
   return (
@@ -52,7 +71,7 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          onClick={(e) => { e.preventDefault(); handleNav('#hero') }}
+          onClick={handleLogoClick}
           className="logo-appear select-none flex items-baseline gap-1"
           aria-label="Home"
         >

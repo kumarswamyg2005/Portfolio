@@ -9,6 +9,7 @@ import {
   HiSparkles,
 } from 'react-icons/hi2'
 import projects from '../data/projects'
+import TiltCard from './TiltCard'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 34 },
@@ -35,12 +36,13 @@ function ProjectCard({ project, index }) {
   } = project
 
   return (
-    <motion.article
-      custom={index}
-      variants={fadeUp}
-      className={`project-card ${featured ? 'project-card-featured' : ''}`}
-      style={{ '--project-accent': accent }}
-    >
+    <TiltCard max={5} className="tilt-wrap">
+      <motion.article
+        custom={index}
+        variants={fadeUp}
+        className={`project-card ${featured ? 'project-card-featured' : ''}`}
+        style={{ '--project-accent': accent }}
+      >
       <div className="project-card-noise" aria-hidden="true" />
       <div className="project-card-top">
         <span className="project-category">
@@ -107,8 +109,9 @@ function ProjectCard({ project, index }) {
             Demo soon
           </span>
         )}
-      </div>
-    </motion.article>
+        </div>
+      </motion.article>
+    </TiltCard>
   )
 }
 

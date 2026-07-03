@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { HiAcademicCap, HiCodeBracket, HiLightBulb } from "react-icons/hi2";
+import { HiAcademicCap, HiCodeBracket, HiLightBulb, HiMapPin } from "react-icons/hi2";
+import TiltCard from "./TiltCard";
 
 const HIGHLIGHTS = [
   {
@@ -42,7 +43,7 @@ export default function About() {
       <section
         id="about"
         className="py-28 relative"
-        style={{ background: "var(--bg-primary)" }}
+        style={{ background: "var(--bg-section)" }}
       >
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
@@ -85,50 +86,43 @@ export default function About() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-14 items-start">
-            {/* Left — Identity */}
+            {/* Left — Holo ID card (3D tilt) */}
             <motion.div
               initial={{ opacity: 0, x: -36 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-center md:items-start gap-5"
+              className="flex flex-col items-center gap-5 md:sticky md:top-28"
             >
-              <div className="text-center md:text-left w-full">
-                <h3
-                  className="font-display font-bold tracking-tight"
-                  style={{
-                    fontSize: "1.6rem",
-                    color: "var(--text-primary)",
-                    letterSpacing: "0.02em",
-                  }}
-                >
-                  G.N. Kumaraswamy
-                </h3>
-                <p
-                  className="font-body text-sm mt-1"
-                  style={{ color: "var(--text-secondary)", lineHeight: "1.6" }}
-                >
-                  IIIT Sri City · Andhra Pradesh, India
-                </p>
-
-                {/* Divider */}
-                <div className="flex items-center gap-3 my-3">
-                  <div
-                    style={{
-                      flex: 1,
-                      height: "1px",
-                      background:
-                        "linear-gradient(90deg, transparent, rgba(99,102,241,0.25), transparent)",
-                    }}
-                  />
+              <TiltCard max={10} className="holo-card" data-cursor="pointer">
+                <div className="holo-card-shine" aria-hidden="true" />
+                <div className="holo-card-header">
+                  <span className="holo-card-chip" aria-hidden="true" />
+                  <span className="holo-card-label">DEV·ID / 2026</span>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mt-1 justify-center md:justify-start">
+                <div className="holo-avatar" aria-hidden="true">
+                  <span>GNK</span>
+                </div>
+
+                <h3 className="holo-name">G.N. Kumaraswamy</h3>
+                <p className="holo-role">AI Product Engineer · Full-Stack ML</p>
+
+                <div className="holo-meta">
+                  <span><HiMapPin size={12} /> IIIT Sri City, India</span>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mt-4 justify-center">
                   <span className="status-tag">Open to Internships</span>
-                  <span className="status-tag status-tag-teal">
-                    B.Tech CSE, IIIT Sri City
-                  </span>
+                  <span className="status-tag status-tag-teal">B.Tech CSE · 3rd Yr</span>
                 </div>
-              </div>
+
+                <div className="holo-barcode" aria-hidden="true">
+                  {Array.from({ length: 28 }).map((_, i) => (
+                    <i key={i} style={{ opacity: 0.25 + ((i * 7) % 10) / 14 }} />
+                  ))}
+                </div>
+              </TiltCard>
+              <p className="holo-hint">tilt me — i follow your cursor ✦</p>
             </motion.div>
 
             {/* Right — Bio */}
