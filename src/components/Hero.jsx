@@ -8,17 +8,17 @@ import { scrollToSection } from '../lib/scroll'
 import { confettiBurst, toast } from '../lib/eggs'
 
 const ROLES = [
-  'AI Product Systems',
-  'Agentic Developer Tools',
-  'Full-Stack ML Platforms',
+  'Production Full-Stack Platforms',
+  'LLM Agent Security Systems',
+  'Race-Condition-Safe Backends',
   'Immersive Web Experiences',
 ]
 
 const NAME = 'Kumaraswamy'
 
 const TECH_MARQUEE = [
-  'React', 'Python', 'TensorFlow', 'Three.js', 'Node.js', 'FastAPI', 'PyTorch',
-  'Flask', 'MongoDB', 'OpenCV', 'Tailwind CSS', 'Express', 'Pandas',
+  'React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'Node.js', 'Redis',
+  'Prisma', 'Docker', 'Three.js', 'MCP', 'ONNX Runtime', 'Tailwind CSS', 'MongoDB',
 ]
 
 function AnimatedName() {
@@ -125,8 +125,9 @@ export default function Hero() {
           className="hero-description font-body text-base sm:text-lg"
           style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}
         >
-          B.Tech CSE · 3rd Year · IIIT Sri City — shipping AI products, agent
-          systems, and polished full-stack interfaces from idea to working repo.
+          B.Tech CSE · Final Year · IIIT Sri City — two full-stack internships
+          shipping production platforms, plus measured work in LLM agent
+          security and concurrency control.
         </motion.p>
 
         {/* CTAs — magnetic */}

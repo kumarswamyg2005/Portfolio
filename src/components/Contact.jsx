@@ -85,7 +85,7 @@ export default function Contact() {
             style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}
           >
             I'm currently open to{' '}
-            <span style={{ color: 'var(--text-primary)' }}>internships</span>,{' '}
+            <span style={{ color: 'var(--text-primary)' }}>full-time roles</span>,{' '}
             <span style={{ color: 'var(--text-primary)' }}>collaborations</span>, and{' '}
             <span style={{ color: 'var(--text-primary)' }}>freelance projects</span>. If you have an
             idea or opportunity you'd like to discuss — my inbox is always open.

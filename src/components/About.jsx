@@ -1,27 +1,32 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { HiAcademicCap, HiCodeBracket, HiLightBulb, HiMapPin } from "react-icons/hi2";
+import { HiAcademicCap, HiBriefcase, HiCodeBracket, HiLightBulb, HiMapPin } from "react-icons/hi2";
 import TiltCard from "./TiltCard";
 
 const HIGHLIGHTS = [
   {
     icon: <HiAcademicCap size={19} />,
     title: "Education",
-    body: "B.Tech in Computer Science & Engineering, Indian Institute of Information Technology (IIIT), Sri City — 3rd Year.",
+    body: "B.Tech in Computer Science & Engineering, Indian Institute of Information Technology (IIIT), Sri City — Final Year, graduating May 2027.",
+  },
+  {
+    icon: <HiBriefcase size={19} />,
+    title: "Experience",
+    body: "Two completed full-stack internships — PRISM, a health-research data platform at Krea University (React · FastAPI · PostgreSQL, RBAC + MFA under India's DPDP Act), and Unity Stream, a secure VR streaming platform at Cymax (React · A-Frame/WebXR, AES-256).",
   },
   {
     icon: <HiCodeBracket size={19} />,
     title: "Engineering",
-    body: "I love building full-stack web apps and AI/ML pipelines — from React frontends and REST APIs to deep learning models trained from scratch.",
+    body: "I ship production platforms end to end across React, TypeScript, Python, FastAPI and PostgreSQL — schema design through polished production UI.",
   },
   {
     icon: <HiLightBulb size={19} />,
     title: "Research Interest",
-    body: "Currently exploring computer vision, NLP, and reinforcement learning — with a focus on applying them to real-world problems.",
+    body: "LLM and GenAI security — agent containment, prompt-injection defense over MCP, plus concurrency control and application security.",
   },
 ];
 
-const ICON_COLORS = ["#6366f1", "#2dd4bf", "#818cf8"];
+const ICON_COLORS = ["#6366f1", "#fb7185", "#2dd4bf", "#818cf8"];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -105,15 +110,15 @@ export default function About() {
                 </div>
 
                 <h3 className="holo-name">G.N. Kumaraswamy</h3>
-                <p className="holo-role">AI Product Engineer · Full-Stack ML</p>
+                <p className="holo-role">Full-Stack Engineer · LLM Security</p>
 
                 <div className="holo-meta">
                   <span><HiMapPin size={12} /> IIIT Sri City, India</span>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mt-4 justify-center">
-                  <span className="status-tag">Open to Internships</span>
-                  <span className="status-tag status-tag-teal">B.Tech CSE · 3rd Yr</span>
+                  <span className="status-tag">Open to Full-Time Roles</span>
+                  <span className="status-tag status-tag-teal">B.Tech CSE · Final Yr</span>
                 </div>
 
                 <div className="holo-barcode" aria-hidden="true">
@@ -137,8 +142,8 @@ export default function About() {
                 className="font-body text-base md:text-[1.05rem]"
                 style={{ color: "var(--text-secondary)", lineHeight: "1.85" }}
               >
-                I'm a 3rd-year CS undergrad passionate about building things
-                that live at the intersection of{" "}
+                I'm a final-year CS undergrad building things that live at the
+                intersection of{" "}
                 <span style={{ color: "var(--text-primary)" }}>
                   intelligent systems
                 </span>{" "}
@@ -146,17 +151,20 @@ export default function About() {
                 <span style={{ color: "var(--text-primary)" }}>
                   great user experiences
                 </span>
-                . I work across the full stack — from writing neural networks in
-                PyTorch to shipping polished React interfaces.
+                . Across two internships I've taken platforms from schema
+                design to production UI, and I work the full stack — from
+                Postgres transactions to polished React interfaces.
               </motion.p>
               <motion.p
                 variants={fadeUp}
                 className="font-body text-base"
                 style={{ color: "var(--text-secondary)", lineHeight: "1.85" }}
               >
-                When I'm not coding, I'm reading research papers, contributing
-                to open-source, or competing in hackathons. I believe the best
-                engineers are relentlessly curious and never stop building.
+                Lately I've been measuring, not guessing — building a benchmark
+                that took indirect prompt-injection success from 100% to 0% on
+                an MCP agent proxy, and proving zero double-booking under
+                concurrent load. I believe the best engineers are relentlessly
+                curious and never stop building.
               </motion.p>
 
               {HIGHLIGHTS.map(({ icon, title, body }, idx) => (
