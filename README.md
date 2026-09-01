@@ -1,167 +1,68 @@
-# G.N. Kumaraswamy — Portfolio
+# kumaraswamy.dev
 
-A state-of-the-art personal portfolio built with **React + Vite + Tailwind CSS + Framer Motion**.
+Personal portfolio — one page, project-first.
 
-## Tech Stack
+## Stack
 
-| Tool           | Purpose                         |
-| -------------- | ------------------------------- |
-| React 18       | UI framework                    |
-| Vite 5         | Build tool & dev server         |
-| Tailwind CSS 3 | Utility-first styling           |
-| Framer Motion  | Scroll animations, transitions  |
-| React Icons    | Icon library (SI, HI2, FI sets) |
+React 18 · Vite 5 · plain CSS · react-icons. No CSS framework, no animation
+library: the only motion is a fade-in driven by one `IntersectionObserver` in
+[`src/App.jsx`](src/App.jsx), and the theme is CSS custom properties on
+`:root[data-theme]`.
 
----
-
-## Local Development
-
-### Prerequisites
-
-- Node.js 18+ (check: `node -v`)
-- npm 9+ (check: `npm -v`)
-
-### Setup
+## Develop
 
 ```bash
-# 1. Navigate into the project folder
-cd Portfolio
-
-# 2. Install dependencies
 npm install
-
-# 3. Start the dev server
-npm run dev
+npm run dev      # http://localhost:5173
+npm run build
+npm run preview
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+## Where the content lives
 
-### Build for production
+Everything is colocated with the component that renders it — no data layer.
 
-```bash
-npm run build      # outputs to /dist
-npm run preview    # preview the production build locally
-```
+| What | File |
+|------|------|
+| Headline, bio, links | [`src/components/Intro.jsx`](src/components/Intro.jsx) |
+| Internships | [`src/components/Experience.jsx`](src/components/Experience.jsx) |
+| Featured projects + "Also built" list | [`src/components/Projects.jsx`](src/components/Projects.jsx) |
+| Perimeter / DesignDen diagrams | [`src/components/Diagrams.jsx`](src/components/Diagrams.jsx) |
+| About copy, stack table | [`src/components/About.jsx`](src/components/About.jsx) |
+| Email, GitHub, LinkedIn, résumé | [`src/components/Footer.jsx`](src/components/Footer.jsx) — `LINKS` |
 
----
+Colors, type scale and spacing are tokens at the top of
+[`src/index.css`](src/index.css). Two tones: black is the ground, one electric
+lime carries every accent. Dark is the default, so `:root` *is* the black
+palette and `:root[data-theme="light"]` overrides it — the page is still black
+if the pre-paint script in [`index.html`](index.html) never runs. That script
+only honours an explicit choice the visitor saved; it deliberately does not
+follow `prefers-color-scheme`.
 
-## Deployment on Vercel
+Every text token clears WCAG AA (4.5:1) against both `--bg` and `--bg-raised`
+in both themes. If you change an accent, re-check it — the tightest pair is
+`--text-faint` on `--bg-raised` in light.
 
-### Option A — Vercel CLI (fastest)
+## Adding a project screenshot
 
-```bash
-npm i -g vercel    # install CLI once
-vercel             # deploy from project root
-```
-
-Follow the prompts. Vercel auto-detects Vite. Use these settings if asked:
-
-- **Framework:** Vite
-- **Build command:** `npm run build`
-- **Output directory:** `dist`
-- **Install command:** `npm install`
-
-### Option B — GitHub + Vercel Dashboard
-
-1. Push this repo to GitHub.
-2. Go to [vercel.com/new](https://vercel.com/new) → Import your repo.
-3. Vercel auto-detects the Vite config. Click **Deploy**.
-4. Every `git push` to `main` triggers a re-deploy automatically.
-
----
-
-## Customisation Guide
-
-### Add your profile photo
-
-1. Drop your photo (e.g. `profile.jpg`) into `/public/`.
-2. In `src/components/About.jsx`, replace the placeholder `<div>` with:
-   ```jsx
-   <img
-     src="/profile.jpg"
-     alt="G.N. Kumaraswamy"
-     className="w-full h-full object-cover"
-   />
-   ```
-
-### Update project links
-
-Open `src/data/projects.js`. For each project, set `demoUrl` to the live URL when deployed:
+Drop the image in `public/work/` and reference it from the project's `shots`
+array in `Projects.jsx`, alongside a `caption` for the figure as a whole:
 
 ```js
-demoUrl: 'https://your-app.vercel.app',
+shots: [
+  { src: '/work/my-project.png', w: 1600, h: 900, alt: 'What the screen shows.' },
+],
+caption: 'One line on what the reader is looking at.',
 ```
 
-The card will automatically switch from "Coming Soon" to a live "Live Demo" button.
+`w`/`h` are the file's real pixel dimensions (`sips -g pixelWidth -g pixelHeight
+file.png`) — they set the aspect ratio so the page doesn't reflow as images
+load. `alt` is read by screen readers and should describe the screen; `caption`
+is visible to everyone and shouldn't just repeat it.
 
-Also update each `github` URL to the specific repository page.
+Keep images ≤1600px wide (`sips -Z 1600 file.png`). A project with neither
+`shots` nor `diagram` falls back to a single-column layout automatically.
 
-### Add / edit projects
+## Résumé
 
-Edit `src/data/projects.js` — add a new object to the array following the existing schema.
-
-### Add / edit skills
-
-Edit `src/data/skills.js` — add items to any category, or add a new category object.
-
-Icon names must be from [react-icons/si](https://react-icons.github.io/react-icons/icons/si/) (e.g. `SiPython`).
-
-### Add LinkedIn / other socials
-
-In `src/components/Contact.jsx`, the LinkedIn entry has a `TODO` comment — paste your profile URL there.
-
-In `src/components/Footer.jsx`, add more social icons following the existing GitHub pattern.
-
-### Change accent colour
-
-Open `tailwind.config.js` and change:
-
-```js
-accent: '#00d4ff',  // ← change to any hex colour
-```
-
-This propagates everywhere via Tailwind utilities.
-
-### Change fonts
-
-Update the Google Fonts `<link>` in `index.html` and the `fontFamily` in `tailwind.config.js`.
-
----
-
-## Project Structure
-
-```
-Portfolio/
-├── index.html
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-├── package.json
-└── src/
-    ├── App.jsx
-    ├── main.jsx
-    ├── index.css
-    ├── hooks/
-    │   ├── useTypewriter.js       # Typewriter cycling hook
-    │   └── useActiveSection.js    # IntersectionObserver nav hook
-    ├── data/
-    │   ├── projects.js            # All project data — edit here
-    │   └── skills.js              # All skills data — edit here
-    └── components/
-        ├── CustomCursor.jsx       # Animated dual-ring cursor
-        ├── Navbar.jsx             # Sticky nav with active highlight
-        ├── Hero.jsx               # Animated hero + particle canvas
-        ├── About.jsx              # About me + education
-        ├── Skills.jsx             # Tech stack badge grid
-        ├── Projects.jsx           # Project cards grid
-        ├── Contact.jsx            # Contact cards with links
-        └── Footer.jsx             # Footer
-```
-
----
-
-## License
-
-MIT — free to use and modify for personal use.
-
-# Portfolio
+`public/resume.pdf` — replace the file to update the link.

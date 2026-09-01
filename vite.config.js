@@ -3,16 +3,4 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor':  ['react', 'react-dom'],
-          'motion-vendor': ['framer-motion'],
-          'icons-vendor':  ['react-icons'],
-          'three-vendor':  ['three', '@react-three/fiber', '@react-three/drei'],
-        },
-      },
-    },
-  },
 })

@@ -3,24 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="G.N. Kumaraswamy — AI product builder, full-stack ML developer, and CS engineer at IIIT Sri City." />
-    <meta property="og:title" content="G.N. Kumaraswamy | Portfolio" />
-    <meta property="og:description" content="AI products, agent systems, research pilots, and full-stack ML platforms by G.N. Kumaraswamy." />
+    <meta name="color-scheme" content="dark light" />
+    <!-- Matches --bg in index.css. Not keyed to prefers-color-scheme: the page
+         opens black regardless of the OS, and Header.jsx rewrites this on toggle. -->
+    <meta name="theme-color" content="#0a0b09" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c4f04a'/%3E%3Ctext x='16' y='23' font-family='ui-monospace,Menlo,monospace' font-size='20' font-weight='600' fill='%230a0b09' text-anchor='middle'%3Ek%3C/text%3E%3C/svg%3E"
+    />
 
-    <!--
-      Fonts:
-        Space Grotesk  — headings / display
-        Inter          — body text
-        JetBrains Mono — code / tech tags
-    -->
+    <title>Gurram Naga Kumaraswamy — Full-stack engineer</title>
+    <meta
+      name="description"
+      content="Final-year CS student at IIIT Sri City. Full-stack engineer — two shipped internship platforms, plus benchmarked work on LLM agent security and concurrency."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Gurram Naga Kumaraswamy — Full-stack engineer" />
+    <meta
+      property="og:description"
+      content="I build full-stack platforms, and I spend a lot of time trying to break the ones I build."
+    />
+    <meta property="og:url" content="https://kumaraswamyportfolio.vercel.app" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://kumaraswamyportfolio.vercel.app" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
-    <title>G.N. Kumaraswamy | Portfolio</title>
+    <!-- Resolve the theme before first paint so there is no flash. Black is
+         the identity, so the OS preference does not override it — only an
+         explicit choice the visitor made here does. -->
+    <script>
+      (function () {
+        try {
+          document.documentElement.dataset.theme =
+            localStorage.getItem('theme') === 'light' ? 'light' : 'dark'
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark'
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

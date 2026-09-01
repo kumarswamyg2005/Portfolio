@@ -32,3 +32,6 @@ pnpm-debug.log*
 .env
 .env.*
 !.env.example
+
+# Local design brief — working document, not published
+DESIGN-BRIEF.md
