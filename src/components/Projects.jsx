@@ -100,9 +100,9 @@ function Figure({ project }) {
 
   if (diagram === 'perimeter') {
     return (
-      <div className="work-figure work-figure-diagram">
+      <div className="quest-figure">
         <Benchmark />
-        <figure>
+        <figure className="plate frame">
           <PerimeterDiagram />
           <figcaption>What every tool call passes through to earn that 0.34 ms.</figcaption>
         </figure>
@@ -111,56 +111,56 @@ function Figure({ project }) {
   }
   if (diagram === 'designden') {
     return (
-      <figure className="work-figure work-figure-diagram">
-        <DesignDenDiagram />
-        <figcaption>The read path behind the 97% — cache first, indexed fallback.</figcaption>
-      </figure>
+      <div className="quest-figure">
+        <figure className="plate frame">
+          <DesignDenDiagram />
+          <figcaption>The read path behind the 97% — cache first, indexed fallback.</figcaption>
+        </figure>
+      </div>
     )
   }
   if (!shots) return null
 
   return (
-    <figure className="work-figure">
-      {shots.map(({ src, w, h, alt }) => (
-        <img
-          key={src}
-          className="shot"
-          src={src}
-          alt={alt}
-          width={w}
-          height={h}
-          loading="lazy"
-          decoding="async"
-        />
-      ))}
-      <figcaption>{caption}</figcaption>
-    </figure>
+    <div className="quest-figure">
+      <figure className="plate frame">
+        {shots.map(({ src, w, h, alt }) => (
+          <img
+            key={src}
+            className="shot"
+            src={src}
+            alt={alt}
+            width={w}
+            height={h}
+            loading="lazy"
+            decoding="async"
+          />
+        ))}
+        <figcaption>{caption}</figcaption>
+      </figure>
+    </div>
   )
 }
 
 function Project({ project, index }) {
   const { name, kind, body, results, stack, github, demo } = project
-  const hasFigure = Boolean(project.diagram || project.shots)
 
   return (
-    <article
-      className={`work-item ${hasFigure ? '' : 'work-item-plain'}`}
-      data-reveal
-    >
-      <div className="work-body">
-        <span className="work-index" aria-hidden="true">
-          {String(index + 1).padStart(2, '0')}
-        </span>
-        <header className="project-head">
-          <h3 className="project-name">{name}</h3>
-          <span className="project-kind">{kind}</span>
-        </header>
+    <article className="quest" id={name.toLowerCase().replace(/\s+/g, '-')} aria-labelledby={`q-${index}`}>
+      <div className="quest-body">
+        <p className="quest-meta">
+          <span className="quest-num">Quest {String(index + 1).padStart(2, '0')}</span>
+          <span>{kind}</span>
+        </p>
+        <h3 className="quest-name" id={`q-${index}`}>
+          {name}
+        </h3>
 
         {body.map((p) => (
           <p key={p.slice(0, 24)}>{p}</p>
         ))}
 
-        <dl className="results">
+        <dl className="loot">
           {results.map((r) => (
             <div key={r.label}>
               <dt>{r.label}</dt>
@@ -169,20 +169,20 @@ function Project({ project, index }) {
           ))}
         </dl>
 
-        <ul className="tags">
+        <ul className="tags" aria-label="Stack">
           {stack.map((s) => (
             <li key={s}>{s}</li>
           ))}
         </ul>
 
-        <div className="project-links">
-          <a href={github} target="_blank" rel="noopener noreferrer">
-            <SiGithub size={14} />
+        <div className="quest-links">
+          <a className="btn btn-small" href={github} target="_blank" rel="noopener noreferrer">
+            <SiGithub size={15} aria-hidden="true" />
             Source
           </a>
           {demo && (
-            <a href={demo} target="_blank" rel="noopener noreferrer">
-              <HiArrowUpRight size={14} />
+            <a className="btn btn-small" href={demo} target="_blank" rel="noopener noreferrer">
+              <HiArrowUpRight size={15} aria-hidden="true" />
               Live demo
             </a>
           )}
@@ -196,29 +196,32 @@ function Project({ project, index }) {
 
 export default function Projects() {
   return (
-    <>
-      <section id="projects" className="work">
-        <h2 className="section-label work-label" data-reveal>Selected work</h2>
-        {PROJECTS.map((project, i) => (
-          <Project key={project.name} project={project} index={i} />
-        ))}
-      </section>
+    <section id="projects" className="stage wrap" aria-labelledby="projects-title">
+      <header className="stage-head">
+        <span className="stage-tag">Stage 2</span>
+        <h2 id="projects-title">Projects</h2>
+        <p className="stage-note">Four featured · twelve side quests</p>
+      </header>
 
-      <section className="section">
-        <h2 className="section-label" data-reveal>Also built</h2>
-        <div className="section-body" data-reveal>
-          <ul className="more">
-            {MORE.map(([name, blurb, href]) => (
-              <li key={name}>
-                <a href={href} target="_blank" rel="noopener noreferrer">
-                  {name}
-                </a>
-                <span> — {blurb}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    </>
+      {PROJECTS.map((project, i) => (
+        <Project key={project.name} project={project} index={i} />
+      ))}
+
+      <div className="side">
+        <h3 className="side-title">Side quests</h3>
+        <ul className="side-list">
+          {MORE.map(([name, blurb, href]) => (
+            <li key={name}>
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                <span className="side-name">{name}</span>
+                <span className="side-dots" aria-hidden="true" />
+                <span className="side-blurb">{blurb}</span>
+                <HiArrowUpRight className="side-arrow" size={15} aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   )
 }

@@ -4,18 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark light" />
-    <!-- Matches --bg in index.css. Not keyed to prefers-color-scheme: the page
-         opens black regardless of the OS, and Header.jsx rewrites this on toggle. -->
-    <meta name="theme-color" content="#0a0b09" />
+    <!-- Matches --bg in index.css; Header.jsx rewrites it when the theme flips. -->
+    <meta name="theme-color" content="#11110f" />
+    <!-- Pixel K on a coin-gold tile, same glyph as the cabinet's side art. -->
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c4f04a'/%3E%3Ctext x='16' y='23' font-family='ui-monospace,Menlo,monospace' font-size='20' font-weight='600' fill='%230a0b09' text-anchor='middle'%3Ek%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9' shape-rendering='crispEdges'%3E%3Crect width='9' height='9' fill='%23ffc629'/%3E%3Cpath fill='%23141209' d='M2 1h1v7H2zM6 1h1v1H6zM5 2h1v1H5zM4 3h1v1H4zM3 4h1v1H3zM4 5h1v1H4zM5 6h1v1H5zM6 7h1v1H6z'/%3E%3C/svg%3E"
     />
 
     <title>Gurram Naga Kumaraswamy — Full-stack engineer</title>
     <meta
       name="description"
-      content="Final-year CS student at IIIT Sri City. Full-stack engineer — two shipped internship platforms, plus benchmarked work on LLM agent security and concurrency."
+      content="Final-year CS student at IIIT Sri City, graduating May 2027. Full-stack engineer — two shipped internship platforms, plus benchmarked work on LLM agent security and concurrency."
     />
 
     <meta property="og:type" content="website" />
@@ -25,19 +25,19 @@
       content="I build full-stack platforms, and I spend a lot of time trying to break the ones I build."
     />
     <meta property="og:url" content="https://kumaraswamyportfolio.vercel.app" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://kumaraswamyportfolio.vercel.app/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://kumaraswamyportfolio.vercel.app" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&family=Jersey+10&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Resolve the theme before first paint so there is no flash. Black is
-         the identity, so the OS preference does not override it — only an
-         explicit choice the visitor made here does. -->
+    <!-- Resolve the theme before first paint so there is no flash. Night is
+         the identity; only an explicit choice made here switches to day. -->
     <script>
       (function () {
         try {

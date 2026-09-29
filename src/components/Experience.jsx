@@ -25,38 +25,35 @@ const ROLES = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-stack">
-      <h2 className="section-label" data-reveal>Experience</h2>
+    <section id="experience" className="stage wrap" aria-labelledby="experience-title">
+      <header className="stage-head">
+        <span className="stage-tag">Stage 1</span>
+        <h2 id="experience-title">Experience</h2>
+        <p className="stage-note">Two internships · both shipped to real users</p>
+      </header>
 
-      {ROLES.map((role, i) => (
-        <article
-          key={role.org}
-          className="role"
-          data-reveal
-          style={{ transitionDelay: `${i * 70}ms` }}
-        >
-          {/* dates live in the left rail — the gutter earns its keep */}
-          <div className="role-when">
-            <span className="role-period">{role.period}</span>
-            <span className="role-place">{role.location}</span>
-          </div>
-
-          <div className="role-main">
-            <h3 className="role-org">
-              {role.org}
-              <span className="role-title">{role.title}</span>
-            </h3>
+      <div className="saves">
+        {ROLES.map((role, i) => (
+          <article key={role.org} className="save frame">
+            <p className="save-bar">
+              <span className="save-slot">Save {String(i + 1).padStart(2, '0')}</span>
+              <span>
+                {role.period} · {role.location}
+              </span>
+            </p>
+            <h3 className="save-org">{role.org}</h3>
+            <p className="save-role">{role.title}</p>
             {role.body.map((p) => (
               <p key={p.slice(0, 24)}>{p}</p>
             ))}
-            <ul className="tags">
+            <ul className="tags" aria-label="Stack">
               {role.stack.map((s) => (
                 <li key={s}>{s}</li>
               ))}
             </ul>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))}
+      </div>
     </section>
   )
 }
