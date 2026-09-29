@@ -1,7 +1,7 @@
 import { SiGithub } from 'react-icons/si'
 import { HiArrowUpRight } from 'react-icons/hi2'
 import Benchmark from './Benchmark'
-import { PerimeterDiagram, DesignDenDiagram } from './Diagrams'
+import { PerimeterDiagram, DesignDenDiagram, ForewarnDiagram } from './Diagrams'
 
 const PROJECTS = [
   {
@@ -23,27 +23,6 @@ const PROJECTS = [
     github: 'https://github.com/kumarswamyg2005/Perimeter',
   },
   {
-    name: 'SeatLock',
-    kind: 'Concurrency · ticketing',
-    body: [
-      'Two people click the same seat in the same millisecond. Exactly one of them should get it, and the other should be told clearly — not silently double-booked and refunded a week later.',
-      'SeatLock holds an atomic Redis TTL lock for the duration of checkout and backs it with a PostgreSQL SELECT … FOR UPDATE transaction. The second lock isn’t redundant: if Redis drops a key, the database is still the thing that decides, so a cache failure costs latency instead of correctness.',
-      'There’s a concurrency lab built into the app that fires simultaneous requests at a single seat, so you can watch the 200 and the 409 resolve against each other in under 5 ms rather than take my word for it.',
-    ],
-    results: [
-      { label: 'Concurrent load', value: <><em>Zero</em> double-bookings</> },
-      { label: 'Race resolution', value: 'Under 5 ms' },
-      { label: 'Failure mode', value: 'Redis down → still correct' },
-    ],
-    shots: [
-      { src: '/work/seatlock-seat_map.png', w: 1600, h: 902, alt: 'SeatLock’s stadium seat map: available seats in green, seats held by another checkout dimmed, booked seats disabled.' },
-      { src: '/work/seatlock-concurrency_lab.png', w: 1600, h: 902, alt: 'The in-app concurrency lab, showing two simultaneous claims on one seat resolving to a 200 and a 409.' },
-    ],
-    caption: 'The seat map, and the lab that races two claims at a single seat.',
-    stack: ['React', 'TypeScript', 'Node.js', 'Prisma', 'PostgreSQL', 'Redis', 'Stripe'],
-    github: 'https://github.com/kumarswamyg2005/SeatLock',
-  },
-  {
     name: 'DesignDen',
     kind: 'Full-stack commerce',
     body: [
@@ -61,26 +40,29 @@ const PROJECTS = [
     github: 'https://github.com/kumarswamyg2005/Designden',
   },
   {
-    name: 'Unity Stream',
-    kind: 'WebXR · built at Cymax',
+    name: 'Forewarn',
+    kind: 'Serverless AWS · guarded AI',
     body: [
-      'The VR streaming platform I built during my Cymax internship. 360° video plays in the browser through WebXR and A-Frame, so a session starts from a link instead of an install.',
-      'Media is encrypted with AES-256 through the WebCrypto API, and the session manager holds multiple headsets on a synchronized broadcast state so a room watches the same frame.',
+      'Weather services warn whole regions in the language of a bulletin, and the people most exposed to heat, flooding and storms often never read them. Forewarn takes the forecast for one exact place, turns it into one of four risk levels using fixed rules anyone can read, and writes three to five practical actions for a chosen group — outdoor workers, farmers, older people, parents.',
+      'An AI model writes the wording, but it never decides the level or adds a fact. Its output is schema-checked, every numeral has to match the forecast or the place’s emergency number, and the text must be plain English. On any failure, including a timeout, the page shows hand-written advice rather than an error.',
+      'The backend is serverless AWS, all in CDK v2. Authorization lives in the database query, the five-place quota is a DynamoDB transaction — a test fires ten creates at once and exactly one wins — and a CDK assertion test fails the build if any role grants Resource: "*". Each of the threat model’s 16 invariants maps to a test.',
     ],
     results: [
-      { label: 'Media', value: 'AES-256 via WebCrypto' },
-      { label: 'Session', value: 'Multi-headset sync' },
-      { label: 'Delivery', value: 'In-browser, no install' },
+      { label: 'Test suite', value: <><em>163</em> tests</> },
+      { label: 'Threat model', value: '16 invariants, each tested' },
+      { label: 'Quota race', value: '10 parallel → exactly 1' },
     ],
-    shots: [{ src: '/work/unitystream.png', w: 1600, h: 1000, alt: 'Unity Stream’s sign-in screen: a split dark layout with the session entry form on the right.' }],
-    caption: 'Session entry — a headset joins from a link, with no install.',
-    stack: ['React', 'Vite', 'A-Frame', 'WebXR', 'WebCrypto'],
-    github: 'https://github.com/kumarswamyg2005/BTP-website-',
-    demo: 'https://btp-website-sage.vercel.app',
+    shots: [{ src: '/work/forewarn.png', w: 1600, h: 1042, alt: 'Three Forewarn phone screens: the list of places, Mumbai at the Watch level for strong wind with advice groups to choose from, and the printable notice with India’s emergency numbers.' }],
+    caption: 'Pick a place, get one level and a few actions, print it as a notice.',
+    diagram: 'forewarn',
+    stack: ['TypeScript', 'React', 'AWS CDK v2', 'Lambda', 'DynamoDB', 'Cognito', 'Bedrock'],
+    github: 'https://github.com/kumarswamyg2005/Forewarn',
   },
 ]
 
 const MORE = [
+  ['SeatLock', 'concurrent seat booking, zero double-bookings', 'https://github.com/kumarswamyg2005/SeatLock'],
+  ['Unity Stream', 'WebXR streaming, built at Cymax', 'https://github.com/kumarswamyg2005/BTP-website-'],
   ['Helix', 'repo archaeology in 3D', 'https://github.com/kumarswamyg2005/Helix'],
   ['GhostDoc', 'screen recordings → docs', 'https://github.com/kumarswamyg2005/GhostDoc'],
   ['SynthLab', 'synthetic tabular data', 'https://github.com/kumarswamyg2005/SynthLab'],
@@ -95,49 +77,33 @@ const MORE = [
   ['Temporal Calibration', 'LLM confidence vs. cutoff', 'https://github.com/kumarswamyg2005/temporal-calib-pilot'],
 ]
 
+const DIAGRAMS = {
+  perimeter: [PerimeterDiagram, 'What every tool call passes through to earn that 0.34 ms.'],
+  designden: [DesignDenDiagram, 'The read path behind the 97% — cache first, indexed fallback.'],
+  forewarn: [ForewarnDiagram, 'The model writes the words; code decides the level and checks every number.'],
+}
+
 function Figure({ project }) {
   const { diagram, shots, caption } = project
-
-  if (diagram === 'perimeter') {
-    return (
-      <div className="quest-figure">
-        <Benchmark />
-        <figure className="plate frame">
-          <PerimeterDiagram />
-          <figcaption>What every tool call passes through to earn that 0.34 ms.</figcaption>
-        </figure>
-      </div>
-    )
-  }
-  if (diagram === 'designden') {
-    return (
-      <div className="quest-figure">
-        <figure className="plate frame">
-          <DesignDenDiagram />
-          <figcaption>The read path behind the 97% — cache first, indexed fallback.</figcaption>
-        </figure>
-      </div>
-    )
-  }
-  if (!shots) return null
+  const [Diagram, diagramCaption] = DIAGRAMS[diagram] ?? []
 
   return (
     <div className="quest-figure">
-      <figure className="plate frame">
-        {shots.map(({ src, w, h, alt }) => (
-          <img
-            key={src}
-            className="shot"
-            src={src}
-            alt={alt}
-            width={w}
-            height={h}
-            loading="lazy"
-            decoding="async"
-          />
-        ))}
-        <figcaption>{caption}</figcaption>
-      </figure>
+      {diagram === 'perimeter' && <Benchmark />}
+      {shots && (
+        <figure className="plate frame">
+          {shots.map(({ src, w, h, alt }) => (
+            <img key={src} className="shot" src={src} alt={alt} width={w} height={h} loading="lazy" decoding="async" />
+          ))}
+          <figcaption>{caption}</figcaption>
+        </figure>
+      )}
+      {Diagram && (
+        <figure className="plate frame">
+          <Diagram />
+          <figcaption>{diagramCaption}</figcaption>
+        </figure>
+      )}
     </div>
   )
 }
@@ -200,7 +166,7 @@ export default function Projects() {
       <header className="stage-head">
         <span className="stage-tag">Stage 2</span>
         <h2 id="projects-title">Projects</h2>
-        <p className="stage-note">Four featured · twelve side quests</p>
+        <p className="stage-note">Three featured · fourteen side quests</p>
       </header>
 
       {PROJECTS.map((project, i) => (

@@ -8,8 +8,8 @@ import { LINKS } from './Footer'
    high-score table is just a list of someone's best results. */
 const SCORES = [
   { rank: '1st', score: '213/213', what: 'injection payloads blocked', where: 'Perimeter' },
-  { rank: '2nd', score: '0', what: 'double-bookings under concurrent load', where: 'SeatLock' },
-  { rank: '3rd', score: '−97%', what: 'product query latency', where: 'DesignDen' },
+  { rank: '2nd', score: '−97%', what: 'product query latency', where: 'DesignDen' },
+  { rank: '3rd', score: '163', what: 'unit and integration tests', where: 'Forewarn' },
   { rank: '4th', score: '2', what: 'internships, both shipped to real users', where: 'Krea · Cymax' },
 ]
 

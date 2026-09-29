@@ -1,6 +1,7 @@
 /**
- * Two projects have nothing to screenshot — Perimeter is a proxy, and
- * DesignDen's demo backend is offline. Both diagrams are drawn on a 440-unit
+ * Mechanism diagrams. Perimeter is a proxy and DesignDen's demo backend is
+ * offline, so they have nothing to screenshot; Forewarn has screens, but the
+ * guarded-AI path is the part worth drawing. All three are drawn on a 440-unit
  * viewBox, the width of the figure column, so labels render at their true size.
  * Colours come from the theme tokens in index.css, never baked in here.
  */
@@ -102,6 +103,77 @@ export function DesignDenDiagram() {
       </g>
 
       <text x="0" y="256" className="d-sub d-note">a miss warms the cache on the way back</text>
+    </svg>
+  )
+}
+
+export function ForewarnDiagram() {
+  return (
+    <svg
+      className="diagram"
+      viewBox="0 0 440 360"
+      role="img"
+      aria-label="A place's forecast goes through fixed rules that decide one of four risk levels in code. Only the level, the hazard and rounded numbers go to Bedrock, which writes the wording. A validator checks the schema, that every numeral matches the forecast or the emergency number, and that the text is plain English. If it passes, the model's wording is shown; if it fails or times out, hand-written advice is shown instead, never an error."
+    >
+      <defs>
+        <marker id="fw-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L8 4 L0 8 z" />
+        </marker>
+        <marker className="m-ok" id="fw-arrow-ok" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L8 4 L0 8 z" />
+        </marker>
+        <marker className="m-bad" id="fw-arrow-bad" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L8 4 L0 8 z" />
+        </marker>
+      </defs>
+
+      <text x="0" y="14" className="d-label">forecast for one place</text>
+      <text x="0" y="32" className="d-sub">Open-Meteo · the place’s time zone</text>
+      <g className="d-muted">
+        <line x1="56" y1="42" x2="56" y2="62" markerEnd="url(#fw-arrow)" />
+      </g>
+
+      <g className="d-box">
+        <rect x="0" y="64" width="220" height="54" rx="4" />
+        <text x="16" y="88" className="d-title">RULES</text>
+        <text x="16" y="106" className="d-sub">fixed thresholds</text>
+      </g>
+      <g className="d-ok">
+        <line x1="220" y1="91" x2="262" y2="91" markerEnd="url(#fw-arrow-ok)" />
+        <text x="272" y="88" className="d-label">level</text>
+        <text x="272" y="106" className="d-sub">decided here, in code</text>
+      </g>
+
+      <g className="d-muted">
+        <line x1="56" y1="118" x2="56" y2="144" markerEnd="url(#fw-arrow)" />
+        <text x="68" y="136" className="d-sub">rounded numbers only</text>
+      </g>
+
+      <g className="d-box">
+        <rect x="0" y="146" width="220" height="54" rx="4" />
+        <text x="16" y="170" className="d-title">BEDROCK</text>
+        <text x="16" y="188" className="d-sub">writes the wording</text>
+      </g>
+      <g className="d-muted">
+        <line x1="56" y1="200" x2="56" y2="226" markerEnd="url(#fw-arrow)" />
+      </g>
+
+      <g className="d-box">
+        <rect x="0" y="228" width="440" height="58" rx="4" />
+        <text x="16" y="252" className="d-title">VALIDATOR</text>
+        <text x="16" y="272" className="d-sub">schema · every numeral must match · plain English</text>
+      </g>
+
+      <g className="d-ok">
+        <line x1="90" y1="286" x2="90" y2="314" markerEnd="url(#fw-arrow-ok)" />
+        <text x="8" y="336" className="d-label">passes</text>
+        <text x="8" y="354" className="d-sub">the model’s wording</text>
+      </g>
+      <g className="d-bad">
+        <line x1="320" y1="286" x2="320" y2="314" markerEnd="url(#fw-arrow-bad)" strokeDasharray="5 4" />
+        <text x="232" y="336" className="d-label">fails or times out</text>
+        <text x="232" y="354" className="d-sub">hand-written advice</text>
+      </g>
     </svg>
   )
 }

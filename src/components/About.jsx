@@ -1,18 +1,21 @@
 import {
-  SiDocker, SiExpress, SiFastapi, SiGithubactions, SiJavascript, SiJest, SiJsonwebtokens,
-  SiModelcontextprotocol, SiMongodb, SiNextdotjs, SiNodedotjs, SiOnnx, SiPostgresql, SiPrisma,
-  SiPytest, SiPython, SiReact, SiRedis, SiRedux, SiSocketdotio, SiStripe, SiTailwindcss,
-  SiThreedotjs, SiTypescript, SiVercel, SiVite,
+  SiAframe, SiDocker, SiExpress, SiFastapi, SiGit, SiGithubactions, SiHtml5, SiJavascript, SiJest,
+  SiJsonwebtokens, SiModelcontextprotocol, SiMongodb, SiNextdotjs, SiNodedotjs, SiOnnx,
+  SiPostgresql, SiPrisma, SiPytest, SiPython, SiReact, SiRedis, SiRedux, SiSocketdotio, SiStripe,
+  SiTailwindcss, SiThreedotjs, SiTypescript, SiVercel, SiVite,
 } from 'react-icons/si'
+import { FaAws } from 'react-icons/fa6'
 
-/* Items without a brand mark get the pixel glyph in CSS. */
+/* Mirrors the résumé's skills section. Items without a brand mark get the
+   pixel glyph in CSS. */
 const STACK = [
-  ['Languages', [['Python', SiPython], ['TypeScript', SiTypescript], ['JavaScript', SiJavascript], ['SQL']]],
-  ['Frontend', [['React', SiReact], ['Next.js', SiNextdotjs], ['Redux Toolkit', SiRedux], ['Three.js', SiThreedotjs], ['Tailwind', SiTailwindcss], ['Vite', SiVite]]],
-  ['Backend', [['Node.js', SiNodedotjs], ['Express', SiExpress], ['FastAPI', SiFastapi], ['Socket.io', SiSocketdotio], ['REST'], ['JWT', SiJsonwebtokens]]],
-  ['Data', [['PostgreSQL', SiPostgresql], ['MongoDB', SiMongodb], ['Redis', SiRedis], ['Prisma', SiPrisma], ['PostGIS']]],
-  ['LLM / AI', [['MCP', SiModelcontextprotocol], ['Prompt-injection defense'], ['RAG'], ['Vector search'], ['ONNX Runtime', SiOnnx], ['Evals']]],
-  ['Infra', [['Docker', SiDocker], ['GitHub Actions', SiGithubactions], ['pytest', SiPytest], ['Jest', SiJest], ['Stripe', SiStripe], ['Vercel', SiVercel]]],
+  ['Languages', [['Python', SiPython], ['JavaScript', SiJavascript], ['TypeScript', SiTypescript], ['SQL'], ['HTML / CSS', SiHtml5]]],
+  ['Frontend', [['React', SiReact], ['Next.js', SiNextdotjs], ['Redux Toolkit', SiRedux], ['Three.js', SiThreedotjs], ['A-Frame / WebXR', SiAframe], ['Tailwind CSS', SiTailwindcss], ['Vite', SiVite]]],
+  ['Backend', [['Node.js', SiNodedotjs], ['Express', SiExpress], ['FastAPI', SiFastapi], ['Socket.io', SiSocketdotio], ['REST APIs'], ['JWT auth', SiJsonwebtokens]]],
+  ['Databases', [['PostgreSQL', SiPostgresql], ['PostGIS'], ['MongoDB', SiMongodb], ['Redis', SiRedis], ['Prisma ORM', SiPrisma]]],
+  ['GenAI / LLM', [['MCP', SiModelcontextprotocol], ['Prompt-injection defense'], ['RAG'], ['Vector search'], ['ONNX Runtime', SiOnnx], ['LLM evaluation']]],
+  ['Platforms', [['AWS Lambda', FaAws], ['DynamoDB', FaAws], ['AWS CDK', FaAws], ['Bedrock', FaAws], ['Docker', SiDocker], ['Docker Compose', SiDocker], ['GitHub Actions', SiGithubactions], ['Git', SiGit], ['pytest', SiPytest], ['Jest', SiJest], ['Stripe', SiStripe], ['Vercel', SiVercel]]],
+  ['Concepts', [['Concurrency control'], ['System design'], ['Application security'], ['AES-256 encryption'], ['Unit testing']]],
 ]
 
 const SHEET = [
